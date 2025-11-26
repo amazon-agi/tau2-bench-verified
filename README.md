@@ -10,6 +10,23 @@
 
 **τ²-Bench-Verified** is a corrected and human verified version of the original [τ²-bench benchmark](https://github.com/sierra-research/tau2-bench). This release addresses issues discovered in the original dataset where task definitions, expected actions, and evaluation criteria did not properly align with the stated policies or database contents.
 
+### 🏆 Leaderboard
+
+| Rank | Model | Airline | Retail | Telecom | Average |
+|:----:|-------|:-------:|:------:|:-------:|:-------:|
+| 🥇 | **Claude Opus 4.5** | 74.40% | 80.88% | 90.70% | **81.99%** |
+| 🥈 | **GPT-5** *(reasoning: med)* | 72.00% | 78.25% | 89.50% | **79.92%** |
+| 🥉 | **Gemini Pro 3** | 70.80% | 77.72% | 89.65% | **79.39%** |
+| 4 | GPT-5.1 *(reasoning: high)* | 72.40% | 77.54% | 80.53% | 76.82% |
+| 5 | Claude Sonnet 4.5 | 66.80% | 77.19% | 75.96% | 73.32% |
+| 6 | GPT-5-mini *(reasoning: med)* | 68.80% | 73.68% | 67.02% | 69.83% |
+| 7 | Gemini Pro 2.5 | 60.00% | 71.26% | 37.19% | 56.15% |
+| 8 | Claude Haiku 4.5 | 54.00% | 69.12% | 35.96% | 53.03% |
+| 9 | GPT-5.1 *(reasoning: med)* | 54.00% | 59.80% | 39.80% | 51.20% |
+| 10 | Gemini Flash 2.5 | 44.00% | 57.72% | 22.98% | 41.57% |
+
+<sub>All models evaluated with `gpt-4.1` as user simulator.</sub>
+
 ### Why This Version?
 
 During verification of the original τ²-bench, we identified several categories of issues:
@@ -25,6 +42,80 @@ During verification of the original τ²-bench, we identified several categories
 All fixes have been carefully documented with references to the specific policy rules that justify each change.
 
 **📋 [View Complete List of Fixes](FIXES.md)** - Detailed documentation of every change made, including policy references.
+
+#### Representative Examples of Corrections
+
+The following table illustrates the types of issues we identified and corrected:
+
+<table>
+<tr>
+<th align="center">(a) τ-Retail example</th>
+<th align="center">(b) τ-Airline example</th>
+</tr>
+<tr>
+<td>
+
+**📘 Wiki policy**
+
+Exchanges must involve a *different product option* of the same item. Re-using the exact same option is not allowed.
+
+</td>
+<td>
+
+**📘 Wiki policy**
+
+If a flight is delayed, a certificate can be issued *only after* the reservation is changed or cancelled.
+
+</td>
+</tr>
+<tr>
+<td>
+
+**❌ Ground truth (incorrect)**
+
+Exchange item ID **8069050545**, with **SAME** item **8069050545**
+
+*Error: Both IDs are identical — violating the rule that exchanges must select a different option.*
+
+</td>
+<td>
+
+**❌ Ground truth (incorrect)**
+
+- `get_user_details()`
+- **send_certificate(amount = $150)**
+
+*Error: A certificate is issued directly, without performing the required change/cancellation.*
+
+</td>
+</tr>
+<tr>
+<td>
+
+**✅ Correct solution**
+
+Exchange item ID **8069050545**, with different item **3609437808**
+
+*Fix: New product option must differ from the old one.*
+
+</td>
+<td>
+
+**✅ Correct solution**
+
+- `get_user_details()`
+
+*Fix: The user doesn't want to change or cancel the flight so no certificate is issued.*
+
+</td>
+</tr>
+</table>
+
+<p align="center"><em>Two representative examples of incorrect ground-truth annotations found in τ-Bench. (a) In Retail, the solution reuses the same product ID, violating the policy that exchanges require a different option. (b) In Airline, the solution issues a certificate without first confirming and changing/cancelling the reservation. See <a href="FIXES.md">FIXES.md</a> for the complete list of corrections.</em></p>
+
+### System Architecture
+
+The figures below illustrate the τ²-bench settings:
 
 <div align="center">
 <img src="figs/overview.png" width="95%" alt="System Overview"><br>
