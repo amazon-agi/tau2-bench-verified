@@ -4,7 +4,7 @@
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![arXiv](http://img.shields.io/badge/cs.AI-arXiv-B31B1B.svg?logo=arxiv&logoColor=red)](#) TBD
-[![blog](https://img.shields.io/badge/blog-tau2--bench--verified-green)](#) TBD
+[![blog](https://img.shields.io/badge/blog-tau2--bench--verified-green)](https://www.amazon.science/publications/saber-small-actions-big-errors-safe-guarding-mutating-steps-in-llm-agents)
 
 ## 🔍 About τ²-Bench-Verified
 
@@ -14,16 +14,17 @@
 
 | Rank | Model | Airline | Retail | Telecom | Average |
 |:----:|-------|:-------:|:------:|:-------:|:-------:|
-| 🥇 | **Claude Opus 4.5** | 74.40% | 80.88% | 90.70% | **81.99%** |
-| 🥈 | **GPT-5** *(reasoning: med)* | 72.00% | 78.25% | 89.50% | **79.92%** |
-| 🥉 | **Gemini Pro 3** | 70.80% | 77.72% | 89.65% | **79.39%** |
-| 4 | GPT-5.1 *(reasoning: high)* | 72.40% | 77.54% | 80.53% | 76.82% |
-| 5 | Claude Sonnet 4.5 | 66.80% | 77.19% | 75.96% | 73.32% |
-| 6 | GPT-5-mini *(reasoning: med)* | 68.80% | 73.68% | 67.02% | 69.83% |
-| 7 | Gemini Pro 2.5 | 60.00% | 71.26% | 37.89% | 56.38% |
-| 8 | Claude Haiku 4.5 | 54.00% | 69.12% | 37.19% | 53.44% |
-| 9 | GPT-5.1 *(reasoning: med)* | 54.00% | 59.80% | 39.80% | 51.20% |
-| 10 | Gemini Flash 2.5 | 44.00% | 57.72% | 22.98% | 41.57% |
+| 🥇 | **Grok 4.1 Fast Reasoning** | 72.00% | 81.40% | 94.74% | **82.71%** |
+| 🥈 | **Claude Opus 4.5** | 74.40% | 80.88% | 90.70% | **81.99%** |
+| 🥉 | **GPT-5** *(reasoning: med)* | 72.00% | 78.25% | 89.50% | **79.92%** |
+| 4 | Gemini Pro 3 | 70.80% | 77.72% | 89.65% | 79.39% |
+| 5 | GPT-5.1 *(reasoning: high)* | 72.40% | 77.54% | 80.53% | 76.82% |
+| 6 | Claude Sonnet 4.5 | 66.80% | 77.19% | 75.96% | 73.32% |
+| 7 | GPT-5-mini *(reasoning: med)* | 68.80% | 73.68% | 67.02% | 69.83% |
+| 8 | Gemini Pro 2.5 | 60.00% | 71.26% | 37.89% | 56.38% |
+| 9 | Claude Haiku 4.5 | 54.00% | 69.12% | 37.19% | 53.44% |
+| 10 | GPT-5.1 *(reasoning: med)* | 54.00% | 59.80% | 39.80% | 51.20% |
+| 11 | Gemini Flash 2.5 | 44.00% | 57.72% | 22.98% | 41.57% |
 
 <sub>All models evaluated with `gpt-5.1` as user simulator.</sub>
 
@@ -470,7 +471,17 @@ sequenceDiagram
 
 If you use τ²-Bench-Verified, please cite the original τ²-bench paper and the τ²-bench-Verified paper:
 
-**τ²-Bench-Verified Paper:** 📄 [PDF](paper/SABER_tau_bench_verified.pdf) — *Citation: TBD*
+**τ²-Bench-Verified Paper:** 📄 [PDF](paper/SABER_tau_bench_verified.pdf)
+
+```bibtex
+@Article{Lafuente2025,
+  author  = {Alex Cuadron Lafuente and Pengfei Yu and Yang Liu and Arpit Gupta},
+  title   = {SABER: Small actions, big errors — Safe-guarding mutating steps in LLM agents},
+  journal = {arXiv},
+  year    = {2025},
+  url     = {https://www.amazon.science/publications/saber-small-actions-big-errors-safe-guarding-mutating-steps-in-llm-agents},
+}
+```
 
 **Original τ²-Bench Paper:**
 
