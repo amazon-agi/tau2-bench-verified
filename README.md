@@ -16,20 +16,44 @@
 |:----:|-------|:-------:|:------:|:-------:|:-------:|
 | 🥇 | **Grok 4.1 Fast Reasoning** | 72.00% | 81.40% | 94.74% | **82.71%** |
 | 🥈 | **Claude Opus 4.5** | 74.40% | 80.88% | 90.70% | **81.99%** |
-| 🥉 | **GPT-5** *(reasoning: med)* | 72.00% | 78.25% | 89.50% | **79.92%** |
-| 4 | Gemini Pro 3 | 70.80% | 77.72% | 89.65% | 79.39% |
-| 5 | Nova 2 Pro | 65.20% | 77.70% | 92.70% | 78.53% |
-| 6 | GPT-5.1 *(reasoning: high)* | 72.40% | 77.54% | 80.53% | 76.82% |
-| 7 | Nova 2 Omni | 68.80% | 78.30% | 80.00% | 75.70% |
-| 8 | Claude Sonnet 4.5 | 66.80% | 77.19% | 75.96% | 73.32% |
-| 9 | Nova 2 Lite | 64.80% | 76.50% | 76.00% | 72.43% |
-| 10 | GPT-5-mini *(reasoning: med)* | 68.80% | 73.68% | 67.02% | 69.83% |
-| 11 | Gemini Pro 2.5 | 60.00% | 71.26% | 37.89% | 56.38% |
-| 12 | Claude Haiku 4.5 | 54.00% | 69.12% | 37.19% | 53.44% |
-| 13 | GPT-5.1 *(reasoning: med)* | 54.00% | 59.80% | 39.80% | 51.20% |
-| 14 | Gemini Flash 2.5 | 44.00% | 57.72% | 22.98% | 41.57% |
+| 🥉 | **GPT-5.2** *(reasoning: xhigh)* | 74.27% | 79.65% | 86.99% | **80.30%** |
+| 4 | GPT-5 *(reasoning: med)* | 72.00% | 78.25% | 89.50% | 79.92% |
+| 5 | Gemini Pro 3 | 70.80% | 77.72% | 89.65% | 79.39% |
+| 6 | Nova 2 Pro | 65.20% | 77.70% | 92.70% | 78.53% |
+| 7 | GPT-5.2 *(reasoning: high)* | 73.79% | 76.49% | 84.21% | 78.16% |
+| 8 | GPT-5.1 *(reasoning: high)* | 72.40% | 77.54% | 80.53% | 76.82% |
+| 9 | Nova 2 Omni | 68.80% | 78.30% | 80.00% | 75.70% |
+| 10 | Claude Sonnet 4.5 | 66.80% | 77.19% | 75.96% | 73.32% |
+| 11 | Nova 2 Lite | 64.80% | 76.50% | 76.00% | 72.43% |
+| 12 | GPT-5-mini *(reasoning: med)* | 68.80% | 73.68% | 67.02% | 69.83% |
+| 13 | GPT-5.2 *(reasoning: med)* | 56.40% | 76.14% | 53.68% | 62.07% |
+| 14 | Gemini Pro 2.5 | 60.00% | 71.26% | 37.89% | 56.38% |
+| 15 | Claude Haiku 4.5 | 54.00% | 69.12% | 37.19% | 53.44% |
+| 16 | GPT-5.1 *(reasoning: med)* | 54.00% | 59.80% | 39.80% | 51.20% |
+| 17 | Gemini Flash 2.5 | 44.00% | 57.72% | 22.98% | 41.57% |
 
 <sub>All models evaluated with `gpt-5.1` as user simulator.</sub>
+
+### 💰 Price / Performance
+
+| Value | Model | Score | Input Tokens | Output Tokens | Total Tokens | Cost | Score/$ |
+|:-----:|-------|:-----:|-------------:|--------------:|-------------:|-----:|--------:|
+| 🥇 | Grok 4.1 Fast Reasoning | 82.71% | 135.51M | 1.78M | 137.30M | $36.88 | 2.24 |
+| 🥈 | GPT-5-mini *(reasoning: med)* | 69.83% | 124.41M | 12.66M | 137.07M | $36.92 | 1.89 |
+| 🥉 | Gemini Flash 2.5 | 41.57% | 100.24M | 1.16M | 101.40M | $32.96 | 1.26 |
+| 4 | GPT-5.2 *(reasoning: med)* | 62.07% | 99.51M | 1.83M | 101.34M | $82.20 | 0.76 |
+| 5 | GPT-5.1 *(reasoning: med)* | 51.20% | 84.90M | 3.34M | 88.23M | $75.09 | 0.68 |
+| 6 | Gemini Pro 3 | 79.39% | 100.35M | 8.43M | 108.77M | $125.63 | 0.63 |
+| 7 | GPT-5.2 *(reasoning: high)* | 78.16% | 99.74M | 5.51M | 105.25M | $139.31 | 0.56 |
+| 8 | GPT-5 *(reasoning: med)* | 79.92% | 93.49M | 16.80M | 110.29M | $202.51 | 0.39 |
+| 9 | Claude Haiku 4.5 | 53.44% | 132.52M | 2.67M | 135.18M | $145.85 | 0.37 |
+| 10 | GPT-5.1 *(reasoning: high)* | 76.82% | 95.83M | 17.39M | 113.22M | $218.18 | 0.35 |
+| 11 | GPT-5.2 *(reasoning: xhigh)* | 80.30% | 95.50M | 14.97M | 110.47M | $265.60 | 0.30 |
+| 12 | Gemini Pro 2.5 | 56.38% | 161.26M | 9.66M | 170.92M | $298.18 | 0.19 |
+| 13 | Claude Sonnet 4.5 | 73.32% | 155.51M | 2.63M | 158.14M | $506.04 | 0.14 |
+| 14 | Claude Opus 4.5 | 81.99% | 134.14M | 2.53M | 136.67M | $733.95 | 0.11 |
+
+<sub>Sorted by value (Score/$). Costs reflect actual API charges including prompt caching discounts. Cost excludes simulated user.</sub>
 
 ### Why This Version?
 
@@ -501,3 +525,4 @@ If you use τ²-Bench-Verified, please cite the original τ²-bench paper and th
       url={https://arxiv.org/abs/2506.07982}, 
 }
 ```
+
