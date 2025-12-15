@@ -38,22 +38,22 @@
 
 | Value | Model | Score | Input Tokens | Output Tokens | Total Tokens | Cost | Score/$ |
 |:-----:|-------|:-----:|-------------:|--------------:|-------------:|-----:|--------:|
-| 🥇 | Grok 4.1 Fast Reasoning | 82.71% | 135.51M | 1.78M | 137.30M | $36.88 | 2.24 |
-| 🥈 | GPT-5-mini *(reasoning: med)* | 69.83% | 124.41M | 12.66M | 137.07M | $36.92 | 1.89 |
-| 🥉 | Gemini Flash 2.5 | 41.57% | 100.24M | 1.16M | 101.40M | $32.96 | 1.26 |
-| 4 | GPT-5.2 *(reasoning: med)* | 62.07% | 99.51M | 1.83M | 101.34M | $82.20 | 0.76 |
-| 5 | GPT-5.1 *(reasoning: med)* | 51.20% | 84.90M | 3.34M | 88.23M | $75.09 | 0.68 |
-| 6 | Gemini Pro 3 | 79.39% | 100.35M | 8.43M | 108.77M | $125.63 | 0.63 |
-| 7 | GPT-5.2 *(reasoning: high)* | 78.16% | 99.74M | 5.51M | 105.25M | $139.31 | 0.56 |
-| 8 | GPT-5 *(reasoning: med)* | 79.92% | 93.49M | 16.80M | 110.29M | $202.51 | 0.39 |
-| 9 | Claude Haiku 4.5 | 53.44% | 132.52M | 2.67M | 135.18M | $145.85 | 0.37 |
-| 10 | GPT-5.1 *(reasoning: high)* | 76.82% | 95.83M | 17.39M | 113.22M | $218.18 | 0.35 |
-| 11 | GPT-5.2 *(reasoning: xhigh)* | 80.30% | 95.50M | 14.97M | 110.47M | $265.60 | 0.30 |
-| 12 | Gemini Pro 2.5 | 56.38% | 161.26M | 9.66M | 170.92M | $298.18 | 0.19 |
-| 13 | Claude Sonnet 4.5 | 73.32% | 155.51M | 2.63M | 158.14M | $506.04 | 0.14 |
-| 14 | Claude Opus 4.5 | 81.99% | 134.14M | 2.53M | 136.67M | $733.95 | 0.11 |
+| 🥇 | Grok 4.1 Fast Reasoning | 82.71% | 27.10M | 0.36M | 27.46M | $7.38 | 2.24 |
+| 🥈 | GPT-5-mini *(reasoning: med)* | 69.83% | 24.88M | 2.53M | 27.41M | $7.38 | 1.89 |
+| 🥉 | Gemini Flash 2.5 | 41.57% | 20.05M | 0.23M | 20.28M | $6.59 | 1.26 |
+| 4 | GPT-5.2 *(reasoning: med)* | 62.07% | 19.90M | 0.37M | 20.27M | $16.44 | 0.76 |
+| 5 | GPT-5.1 *(reasoning: med)* | 51.20% | 16.98M | 0.67M | 17.65M | $15.02 | 0.68 |
+| 6 | Gemini Pro 3 | 79.39% | 20.07M | 1.69M | 21.75M | $25.13 | 0.63 |
+| 7 | GPT-5.2 *(reasoning: high)* | 78.16% | 19.95M | 1.10M | 21.05M | $27.86 | 0.56 |
+| 8 | GPT-5 *(reasoning: med)* | 79.92% | 18.70M | 3.36M | 22.06M | $40.50 | 0.39 |
+| 9 | Claude Haiku 4.5 | 53.44% | 26.50M | 0.53M | 27.04M | $29.17 | 0.37 |
+| 10 | GPT-5.1 *(reasoning: high)* | 76.82% | 19.17M | 3.48M | 22.64M | $43.64 | 0.35 |
+| 11 | GPT-5.2 *(reasoning: xhigh)* | 80.30% | 19.10M | 2.99M | 22.09M | $53.12 | 0.30 |
+| 12 | Gemini Pro 2.5 | 56.38% | 32.25M | 1.93M | 34.18M | $59.64 | 0.19 |
+| 13 | Claude Sonnet 4.5 | 73.32% | 31.10M | 0.53M | 31.63M | $101.21 | 0.14 |
+| 14 | Claude Opus 4.5 | 81.99% | 26.83M | 0.51M | 27.33M | $146.79 | 0.11 |
 
-<sub>Sorted by value (Score/$). Costs reflect actual API charges including prompt caching discounts. Cost excludes simulated user.</sub>
+<sub>Sorted by value (Score/$). Costs reflect actual API charges including prompt caching discounts. Values normalized (averaged over 5 runs). Cost excludes simulated user.</sub>
 
 ### Why This Version?
 
