@@ -6,6 +6,7 @@ import litellm
 from litellm import completion, completion_cost
 from litellm.caching.caching import Cache
 from litellm.main import ModelResponse, Usage
+from litellm.utils import trim_messages
 from loguru import logger
 
 from tau2.config import (
@@ -206,6 +207,15 @@ def generate(
     if tools and tool_choice is None:
         tool_choice = "auto"
     try:
+        max_input_tokens = kwargs.get("max_input_tokens", None)
+        if max_input_tokens is not None:
+            litellm_messages = trim_messages(
+                messages=litellm_messages,
+                model=model,
+                max_tokens=max_input_tokens,
+            )
+            # Drop max_input_tokens from kwargs to avoid passing it to the model.
+            kwargs.pop("max_input_tokens")
         response = completion(
             model=model,
             messages=litellm_messages,
