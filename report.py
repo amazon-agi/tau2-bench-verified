@@ -5,15 +5,16 @@ import argparse
 import csv
 import json
 import sys
+from collections import defaultdict
 from math import comb
 from pathlib import Path
 
 
-def pass_hat_k(n: int, c: int, k: int) -> float:
-    """Compute pass^k metric (arxiv:2406.12045)."""
-    if n < k:
+def pass_hat_k_task(num_trials: int, num_successes: int, k: int) -> float:
+    """Compute per-task pass^k: C(successes, k) / C(trials, k)."""
+    if num_trials < k:
         return 0.0
-    return comb(c, k) / comb(n, k)
+    return comb(num_successes, k) / comb(num_trials, k)
 
 
 def process_file(filepath):
@@ -29,7 +30,20 @@ def process_file(filepath):
     if n == 0:
         return None
 
+    tasks = defaultdict(list)
+    for s in simulations:
+        reward = (s.get("reward_info") or {}).get("reward", 0.0)
+        tasks[s.get("task_id")].append(reward)
+
     passed = sum(1 for s in simulations if (s.get("reward_info") or {}).get("reward") == 1.0)
+
+    def avg_pass_k(k):
+        scores = []
+        for trials in tasks.values():
+            n_t = len(trials)
+            successes = sum(1 for r in trials if r == 1.0)
+            scores.append(pass_hat_k_task(n_t, successes, k))
+        return sum(scores) / len(scores) if scores else 0.0
 
     total_duration = 0
     total_cost = 0
@@ -66,8 +80,8 @@ def process_file(filepath):
         "file": filepath.name,
         "n": n,
         "passed": passed,
-        "pass^1": round(pass_hat_k(n, passed, 1), 4),
-        "pass^2": round(pass_hat_k(n, passed, 2), 4),
+        "pass^1": round(avg_pass_k(1), 4),
+        "pass^2": round(avg_pass_k(2), 4),
         "avg_duration": round(total_duration / n, 2),
         "avg_cost": round(total_cost / n, 6),
         "avg_prompt_tokens": round(total_prompt_tokens / n, 1),
