@@ -39,7 +39,7 @@ class AirlineTools(ToolKitBase):  # Tools
     def __init__(self, db: FlightDB, kb_dir: Optional[Path] = None) -> None:
         super().__init__(db)
 
-        if not kb_dir:
+        if not kb_dir and os.getenv("KB_DIR"):
             kb_dir = Path(os.getenv("KB_DIR"))
         if kb_dir is not None:
             from pipeline.runtime.knowledge_tool import KnowledgeTool

@@ -82,6 +82,7 @@ def process_file(filepath):
         "passed": passed,
         "pass^1": round(avg_pass_k(1), 4),
         "pass^2": round(avg_pass_k(2), 4),
+        "pass^3": round(avg_pass_k(3), 4),
         "avg_duration": round(total_duration / n, 2),
         "avg_cost": round(total_cost / n, 6),
         "avg_prompt_tokens": round(total_prompt_tokens / n, 1),
@@ -118,7 +119,7 @@ def main():
             sys.exit(1)
 
     fieldnames = [
-        "file", "n", "passed", "pass^1", "pass^2",
+        "file", "n", "passed", "pass^1", "pass^2", "pass^3",
         "avg_duration", "avg_cost",
         "avg_prompt_tokens", "avg_completion_tokens", "avg_total_tokens",
         "avg_turns", "avg_knl_toolcalls", "avg_otoolcalls",

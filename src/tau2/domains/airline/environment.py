@@ -1,9 +1,11 @@
 # Copyright Sierra
+import os
 from pathlib import Path
 from typing import Optional
 
 from tau2.data_model.tasks import Task
 from tau2.domains.airline.data_model import FlightDB
+from tau2.domains.airline.merge_wiki import merge_wiki_into_policy
 from tau2.domains.airline.tools import AirlineTools
 from tau2.domains.airline.utils import (
     AIRLINE_DB_PATH,
@@ -25,11 +27,51 @@ def get_environment(
     tools = AirlineTools(db)
     with open(AIRLINE_POLICY_PATH, "r") as fp:
         policy = fp.read()
+        
+    wiki_dir = os.environ.get("KB_DIR")
+    wiki_mode = os.environ.get("KB_MODE")
+    if wiki_dir:
+        if wiki_mode == "override":
+            policy = override_policy_with_wiki(wiki_dir)
+        elif wiki_mode == "merge":
+            policy = merge_wiki_into_policy(policy, wiki_dir)
+
     return Environment(
         domain_name="airline",
         policy=policy,
         tools=tools,
     )
+
+
+def override_policy_with_wiki(kb_dir: str | Path) -> str:
+    """Build a system prompt entirely from wiki articles, keeping only the date/time preamble."""
+    kb_dir = Path(kb_dir)
+    concepts_dir = kb_dir / "concepts"
+
+    with open(AIRLINE_POLICY_PATH, "r") as fp:
+        policy = fp.read()
+
+    # Extract the current date/time line from the original policy
+    date_line = ""
+    for line in policy.splitlines():
+        if "current time is" in line.lower():
+            date_line = line.strip()
+            break
+
+    # Read all wiki articles
+    articles: list[str] = []
+    if concepts_dir.exists():
+        for article_file in sorted(concepts_dir.glob("*.md")):
+            articles.append(article_file.read_text().strip())
+
+    # Compose: date preamble + concatenated wiki articles
+    parts = []
+    if date_line:
+        parts.append(date_line)
+        parts.append("")
+    parts.append("\n\n---\n\n".join(articles))
+
+    return "\n".join(parts)
 
 
 def get_tasks(task_split_name: Optional[str] = "base") -> list[Task]:
