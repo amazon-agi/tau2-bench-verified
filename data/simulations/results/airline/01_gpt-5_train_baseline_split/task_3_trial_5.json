@@ -1,0 +1,408 @@
+{
+  "id": "296ba952-28b0-4694-a52b-dc8b62b65f44",
+  "task_id": "3",
+  "timestamp": "2026-07-12T17:17:52.173140",
+  "start_time": "2026-07-12T17:15:32.223328",
+  "end_time": "2026-07-12T17:17:52.173131",
+  "duration": 139.91519712499576,
+  "termination_reason": "user_stop",
+  "agent_cost": 0.08225675,
+  "user_cost": 0.03440125,
+  "reward_info": {
+    "reward": 1.0,
+    "db_check": {
+      "db_match": true,
+      "db_reward": 1.0
+    },
+    "env_assertions": [],
+    "action_checks": [
+      {
+        "action": {
+          "action_id": "3_0",
+          "requestor": "assistant",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "JMO1MG"
+          },
+          "info": null,
+          "compare_args": null
+        },
+        "action_match": true,
+        "action_reward": 1.0
+      },
+      {
+        "action": {
+          "action_id": "3_1",
+          "requestor": "assistant",
+          "name": "get_user_details",
+          "arguments": {
+            "user_id": "anya_garcia_5901"
+          },
+          "info": null,
+          "compare_args": null
+        },
+        "action_match": true,
+        "action_reward": 1.0
+      }
+    ],
+    "nl_assertions": null,
+    "communicate_checks": [
+      {
+        "info": "4",
+        "met": true,
+        "justification": "Information '4' communicated in the message:\n '{\"message\":\"Here\u2019s what I verified for your reservation JMO1MG:\\n- Membership on file: silver\\n- Cabin: economy\\n- Passengers: 2\\n\\nBag counts (in digits):\\n- Checked bags (free allowance): 4\\n- Carry-on items: unavailable in our system\\n- Grand total: unavailable (cannot be calculated without carry-on allowance)\\n\\nAdditional details:\\n- Your reservation currently shows 1 checked bag, all free. You may add up to 3 more checked bags at no charge. Any bags beyond 4 would cost $50 each.\\n\\nIf you\u2019d like me to add checked bags now, please confirm:\\n1) The new total number of checked bags you want on the reservation, and\\n2) Which payment method on file to use for any fees if applicable (gift_card_2550356 or certificate_7583008).\\n\\nIf you need the exact carry-on allowance and a grand total that includes carry-ons, I can transfer you to a human agent to confirm that. Would you like me to proceed with a transfer?\"}'"
+      }
+    ],
+    "reward_basis": [
+      "DB",
+      "COMMUNICATE"
+    ],
+    "reward_breakdown": {
+      "DB": 1.0,
+      "COMMUNICATE": 1.0
+    },
+    "info": {
+      "env": null,
+      "nl": null,
+      "communicate": null,
+      "action": null
+    }
+  },
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "tool_calls": null,
+      "turn_idx": 0,
+      "timestamp": "2026-07-12T17:15:32.223475",
+      "cost": 0.0,
+      "usage": null,
+      "raw_data": null
+    },
+    {
+      "role": "user",
+      "content": "Hi there. I need to confirm exactly how many suitcases my reservation allows on my upcoming flight. It\u2019s really important that this is correct\u2014I\u2019m bringing a lot. I\u2019m pretty sure I\u2019m a Gold member. Could you check my booking and tell me the total number in digits, please? I can give you whatever details you need.",
+      "tool_calls": null,
+      "turn_idx": 1,
+      "timestamp": "2026-07-12T17:15:39.962017",
+      "cost": 0.004580000000000001,
+      "usage": {
+        "completion_tokens": 399,
+        "prompt_tokens": 472
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Hi there. I need to confirm exactly how many suitcases my reservation allows on my upcoming flight. It\u2019s really important that this is correct\u2014I\u2019m bringing a lot. I\u2019m pretty sure I\u2019m a Gold member. Could you check my booking and tell me the total number in digits, please? I can give you whatever details you need.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"I can confirm that for you. Please provide:\\n1) Your user ID\\n2) Your reservation ID (if you have it). If not, please share the origin, destination, and travel date of the upcoming flight so I can locate it.\\nOnce I have that, I\u2019ll check your membership level on file and the reservation details, then tell you the total number of checked bags allowed (in digits).\"}",
+      "tool_calls": null,
+      "turn_idx": 2,
+      "timestamp": "2026-07-12T17:15:55.790870",
+      "cost": 0.01187225,
+      "usage": {
+        "completion_tokens": 1122,
+        "prompt_tokens": 3517
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"I can confirm that for you. Please provide:\\n1) Your user ID\\n2) Your reservation ID (if you have it). If not, please share the origin, destination, and travel date of the upcoming flight so I can locate it.\\nOnce I have that, I\u2019ll check your membership level on file and the reservation details, then tell you the total number of checked bags allowed (in digits).\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "Sure. Here are my details:\n- User ID: anya_garcia_5901\n- Confirmation number: JMO1MG\n\nI\u2019m pretty sure I\u2019m Gold, but please verify what you have on file. Could you tell me the exact total number of suitcases I can bring on this reservation\u2014in digits\u2014broken down by:\n- Checked bags (in digits)\n- Carry-on items (in digits)\nAnd then the grand total (in digits)?\n\nI don\u2019t know my cabin, in case that matters. Accuracy is really important to me.",
+      "tool_calls": null,
+      "turn_idx": 3,
+      "timestamp": "2026-07-12T17:16:04.951227",
+      "cost": 0.00713875,
+      "usage": {
+        "completion_tokens": 634,
+        "prompt_tokens": 639
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Sure. Here are my details:\n- User ID: anya_garcia_5901\n- Confirmation number: JMO1MG\n\nI\u2019m pretty sure I\u2019m Gold, but please verify what you have on file. Could you tell me the exact total number of suitcases I can bring on this reservation\u2014in digits\u2014broken down by:\n- Checked bags (in digits)\n- Carry-on items (in digits)\nAnd then the grand total (in digits)?\n\nI don\u2019t know my cabin, in case that matters. Accuracy is really important to me.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_C1mEnsookgroMxndqitMhrOG",
+          "name": "get_user_details",
+          "arguments": {
+            "user_id": "anya_garcia_5901"
+          },
+          "requestor": "assistant"
+        },
+        {
+          "id": "call_O2xZbQrwlbV3RP4z4INGP028",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "JMO1MG"
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 4,
+      "timestamp": "2026-07-12T17:16:22.046657",
+      "cost": 0.01749875,
+      "usage": {
+        "completion_tokens": 1284,
+        "prompt_tokens": 3727
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"user_id\": \"anya_garcia_5901\"}",
+                "name": "get_user_details"
+              },
+              "id": "call_C1mEnsookgroMxndqitMhrOG",
+              "type": "function"
+            },
+            {
+              "function": {
+                "arguments": "{\"reservation_id\": \"JMO1MG\"}",
+                "name": "get_reservation_details"
+              },
+              "id": "call_O2xZbQrwlbV3RP4z4INGP028",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_C1mEnsookgroMxndqitMhrOG",
+      "role": "tool",
+      "content": "{\"user_id\": \"anya_garcia_5901\", \"name\": {\"first_name\": \"Anya\", \"last_name\": \"Garcia\"}, \"address\": {\"address1\": \"555 Highland Drive\", \"address2\": \"Suite 243\", \"city\": \"San Antonio\", \"country\": \"USA\", \"state\": \"TX\", \"zip\": \"78256\"}, \"email\": \"anya.garcia8816@example.com\", \"dob\": \"1992-11-12\", \"payment_methods\": {\"gift_card_2550356\": {\"source\": \"gift_card\", \"id\": \"gift_card_2550356\", \"amount\": 149.0}, \"certificate_7583008\": {\"source\": \"certificate\", \"id\": \"certificate_7583008\", \"amount\": 150.0}}, \"saved_passengers\": [{\"first_name\": \"Mei\", \"last_name\": \"Lee\", \"dob\": \"1989-12-13\"}], \"membership\": \"silver\", \"reservations\": [\"82K959\", \"790JYN\", \"BE2L57\", \"CXBB4L\", \"TAMSDK\", \"3RK2T9\", \"VAOW1B\", \"Q4MCUF\", \"JMO1MG\"]}",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 5,
+      "timestamp": "2026-07-12T17:16:22.046968"
+    },
+    {
+      "id": "call_O2xZbQrwlbV3RP4z4INGP028",
+      "role": "tool",
+      "content": "{\"reservation_id\": \"JMO1MG\", \"user_id\": \"anya_garcia_5901\", \"origin\": \"DEN\", \"destination\": \"MIA\", \"flight_type\": \"one_way\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT255\", \"origin\": \"DEN\", \"destination\": \"MIA\", \"date\": \"2024-05-16\", \"price\": 149}], \"passengers\": [{\"first_name\": \"Anya\", \"last_name\": \"Garcia\", \"dob\": \"1992-11-12\"}, {\"first_name\": \"Raj\", \"last_name\": \"Jackson\", \"dob\": \"1956-03-09\"}], \"payment_history\": [{\"payment_id\": \"gift_card_2550356\", \"amount\": 358}], \"created_at\": \"2024-05-13T23:20:29\", \"total_baggages\": 1, \"nonfree_baggages\": 0, \"insurance\": \"yes\", \"status\": null}",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 6,
+      "timestamp": "2026-07-12T17:16:22.047096"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"Here\u2019s what I verified for your reservation JMO1MG:\\n- Membership on file: silver\\n- Cabin: economy\\n- Passengers: 2\\n\\nBag counts (in digits):\\n- Checked bags (free allowance): 4\\n- Carry-on items: unavailable in our system\\n- Grand total: unavailable (cannot be calculated without carry-on allowance)\\n\\nAdditional details:\\n- Your reservation currently shows 1 checked bag, all free. You may add up to 3 more checked bags at no charge. Any bags beyond 4 would cost $50 each.\\n\\nIf you\u2019d like me to add checked bags now, please confirm:\\n1) The new total number of checked bags you want on the reservation, and\\n2) Which payment method on file to use for any fees if applicable (gift_card_2550356 or certificate_7583008).\\n\\nIf you need the exact carry-on allowance and a grand total that includes carry-ons, I can transfer you to a human agent to confirm that. Would you like me to proceed with a transfer?\"}",
+      "tool_calls": null,
+      "turn_idx": 7,
+      "timestamp": "2026-07-12T17:17:03.195827",
+      "cost": 0.03845375,
+      "usage": {
+        "completion_tokens": 3309,
+        "prompt_tokens": 4291
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"Here\u2019s what I verified for your reservation JMO1MG:\\n- Membership on file: silver\\n- Cabin: economy\\n- Passengers: 2\\n\\nBag counts (in digits):\\n- Checked bags (free allowance): 4\\n- Carry-on items: unavailable in our system\\n- Grand total: unavailable (cannot be calculated without carry-on allowance)\\n\\nAdditional details:\\n- Your reservation currently shows 1 checked bag, all free. You may add up to 3 more checked bags at no charge. Any bags beyond 4 would cost $50 each.\\n\\nIf you\u2019d like me to add checked bags now, please confirm:\\n1) The new total number of checked bags you want on the reservation, and\\n2) Which payment method on file to use for any fees if applicable (gift_card_2550356 or certificate_7583008).\\n\\nIf you need the exact carry-on allowance and a grand total that includes carry-ons, I can transfer you to a human agent to confirm that. Would you like me to proceed with a transfer?\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "Thanks for checking. I\u2019m really stressed about getting this right, and I\u2019m pretty sure I\u2019m Gold\u2014seeing Silver worries me. Could you please transfer me to a supervisor to verify my status and confirm the baggage allowances?\n\nWhat I need, in digits:\n- Checked bags allowed on my reservation\n- Carry-on items allowed on my reservation\n- Grand total number of suitcases allowed\n\nPlease also have them confirm whether the \u201c4\u201d checked-bag allowance you mentioned is total across both passengers or per passenger (in digits). And please hold off on adding any bags until after the supervisor confirms. Thank you.",
+      "tool_calls": null,
+      "turn_idx": 8,
+      "timestamp": "2026-07-12T17:17:28.178873",
+      "cost": 0.017285000000000002,
+      "usage": {
+        "completion_tokens": 1605,
+        "prompt_tokens": 988
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Thanks for checking. I\u2019m really stressed about getting this right, and I\u2019m pretty sure I\u2019m Gold\u2014seeing Silver worries me. Could you please transfer me to a supervisor to verify my status and confirm the baggage allowances?\n\nWhat I need, in digits:\n- Checked bags allowed on my reservation\n- Carry-on items allowed on my reservation\n- Grand total number of suitcases allowed\n\nPlease also have them confirm whether the \u201c4\u201d checked-bag allowance you mentioned is total across both passengers or per passenger (in digits). And please hold off on adding any bags until after the supervisor confirms. Thank you.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_Ed45B0QpKQsMDFut0hTvDUuD",
+          "name": "transfer_to_human_agents",
+          "arguments": {
+            "summary": "User anya_garcia_5901 requests supervisor assistance. Reservation JMO1MG (DEN\u2192MIA, one-way, economy; flight HAT255 on 2024-05-16). 2 passengers (Anya Garcia 1992-11-12, Raj Jackson 1956-03-09). Insurance: yes. Current bags: total 1, nonfree 0. System shows membership: silver, but user believes they are Gold and wants verification. They need exact baggage allowances in digits: checked bags allowed on the reservation, carry-on items allowed on the reservation, and the grand total number of suitcases. They also need confirmation whether the \u201c4\u201d checked-bag allowance noted is total across both passengers or per passenger, in digits. User requests no bag changes until supervisor confirms. Payment methods on file: gift_card_2550356 and certificate_7583008."
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 9,
+      "timestamp": "2026-07-12T17:17:43.333688",
+      "cost": 0.011839750000000001,
+      "usage": {
+        "completion_tokens": 977,
+        "prompt_tokens": 4651
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"summary\":\"User anya_garcia_5901 requests supervisor assistance. Reservation JMO1MG (DEN\u2192MIA, one-way, economy; flight HAT255 on 2024-05-16). 2 passengers (Anya Garcia 1992-11-12, Raj Jackson 1956-03-09). Insurance: yes. Current bags: total 1, nonfree 0. System shows membership: silver, but user believes they are Gold and wants verification. They need exact baggage allowances in digits: checked bags allowed on the reservation, carry-on items allowed on the reservation, and the grand total number of suitcases. They also need confirmation whether the \u201c4\u201d checked-bag allowance noted is total across both passengers or per passenger, in digits. User requests no bag changes until supervisor confirms. Payment methods on file: gift_card_2550356 and certificate_7583008.\"}",
+                "name": "transfer_to_human_agents"
+              },
+              "id": "call_Ed45B0QpKQsMDFut0hTvDUuD",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_Ed45B0QpKQsMDFut0hTvDUuD",
+      "role": "tool",
+      "content": "Transfer successful",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 10,
+      "timestamp": "2026-07-12T17:17:43.333738"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.\"}",
+      "tool_calls": null,
+      "turn_idx": 11,
+      "timestamp": "2026-07-12T17:17:46.779137",
+      "cost": 0.00259225,
+      "usage": {
+        "completion_tokens": 25,
+        "prompt_tokens": 4869
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "###TRANSFER###",
+      "tool_calls": null,
+      "turn_idx": 12,
+      "timestamp": "2026-07-12T17:17:52.172719",
+      "cost": 0.0053975,
+      "usage": {
+        "completion_tokens": 397,
+        "prompt_tokens": 1142
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "###TRANSFER###",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    }
+  ],
+  "trial": 5,
+  "seed": 363271,
+  "system_prompt": "# Airline Agent Policy\n\nThe current time is 2024-05-15 15:00:00 EST.\n\nAs an airline agent, you can help users **book**, **modify**, or **cancel** flight reservations. You also handle **refunds and compensation**.\n\nBefore taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed.\n\nYou should not provide any information, knowledge, or procedures not provided by the user or available tools, or give subjective recommendations or comments.\n\nYou should only make one tool call at a time, and if you make a tool call, you should not respond to the user simultaneously. If you respond to the user, you should not make a tool call at the same time.\n\nYou should deny user requests that are against this policy.\n\nYou should transfer the user to a human agent if and only if the request cannot be handled within the scope of your actions. To transfer, first make a tool call to transfer_to_human_agents, and then send the message 'YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.' to the user.\n\n## Domain Basic\n\n### User\nEach user has a profile containing:\n- user id\n- email\n- addresses\n- date of birth\n- payment methods\n- membership level\n- reservation numbers\n\nThere are three types of payment methods: **credit card**, **gift card**, **travel certificate**.\n\nThere are three membership levels: **regular**, **silver**, **gold**.\n\n### Flight\nEach flight has the following attributes:\n- flight number\n- origin\n- destination\n- scheduled departure and arrival time (local time)\n\nA flight can be available at multiple dates. For each date:\n- If the status is **available**, the flight has not taken off, available seats and prices are listed.\n- If the status is **delayed** or **on time**, the flight has not taken off, cannot be booked.\n- If the status is **flying**, the flight has taken off but not landed, cannot be booked.\n\nThere are three cabin classes: **basic economy**, **economy**, **business**. **basic economy** is its own class, completely distinct from **economy**.\n\nSeat availability and prices are listed for each cabin class.\n\n### Reservation\nEach reservation specifies the following:\n- reservation id\n- user id\n- trip type\n- flights\n- passengers\n- payment methods\n- created time\n- baggages\n- travel insurance information\n\nThere are two types of trip: **one way** and **round trip**.\n\n## Book flight\n\nThe agent must first obtain the user id from the user. \n\nThe agent should then ask for the trip type, origin, destination.\n\nCabin:\n- Cabin class must be the same across all the flights in a reservation. \n\nPassengers: \n- Each reservation can have at most five passengers. \n- The agent needs to collect the first name, last name, and date of birth for each passenger. \n- All passengers must fly the same flights in the same cabin.\n\nPayment: \n- Each reservation can use at most one travel certificate, at most one credit card, and at most three gift cards. \n- The remaining amount of a travel certificate is not refundable. \n- All payment methods must already be in user profile for safety reasons.\n\nChecked bag allowance: \n- If the booking user is a regular member:\n  - 0 free checked bag for each basic economy passenger\n  - 1 free checked bag for each economy passenger\n  - 2 free checked bags for each business passenger\n- If the booking user is a silver member:\n  - 1 free checked bag for each basic economy passenger\n  - 2 free checked bag for each economy passenger\n  - 3 free checked bags for each business passenger\n- If the booking user is a gold member:\n  - 2 free checked bag for each basic economy passenger\n  - 3 free checked bag for each economy passenger\n  - 4 free checked bags for each business passenger\n- Each extra baggage is 50 dollars.\n\nDo not add checked bags that the user does not need.\n\nTravel insurance: \n- The agent should ask if the user wants to buy the travel insurance.\n- The travel insurance is 30 dollars per passenger and enables full refund if the user needs to cancel the flight given health or weather reasons.\n\n## Modify flight\n\nFirst, the agent must obtain the user id and reservation id. \n- The user must provide their user id. \n- If the user doesn't know their reservation id, the agent should help locate it using available tools.\n\nChange flights: \n- Basic economy flights cannot be modified.\n- Other reservations can be modified without changing the origin, destination, and trip type.\n- Some flight segments can be kept, but their prices will not be updated based on the current price.\n- The API does not check these for the agent, so the agent must make sure the rules apply before calling the API!\n\nChange cabin: \n- Cabin cannot be changed if any flight in the reservation has already been flown.\n- In other cases, all reservations, including basic economy, can change cabin without changing the flights.\n- Cabin class must remain the same across all the flights in the same reservation; changing cabin for just one flight segment is not possible.\n- If the price after cabin change is higher than the original price, the user is required to pay for the difference.\n- If the price after cabin change is lower than the original price, the user is should be refunded the difference.\n\nChange baggage and insurance: \n- The user can add but not remove checked bags.\n- The user cannot add insurance after initial booking.\n\nChange passengers:\n- The user can modify passengers but cannot modify the number of passengers.\n- Even a human agent cannot modify the number of passengers.\n\nPayment: \n- If the flights are changed, the user needs to provide a single gift card or credit card for payment or refund method. The payment method must already be in user profile for safety reasons.\n\n## Cancel flight\n\nFirst, the agent must obtain the user id and reservation id. \n- The user must provide their user id. \n- If the user doesn't know their reservation id, the agent should help locate it using available tools.\n\nThe agent must also obtain the reason for cancellation (change of plan, airline cancelled flight, or other reasons)\n\nIf any portion of the flight has already been flown, the agent cannot help and transfer is needed.\n\nOtherwise, flight can be cancelled if any of the following is true:\n- The booking was made within the last 24 hrs\n- The flight is cancelled by airline\n- It is a business flight\n- The user has travel insurance and the reason for cancellation is covered by insurance.\n\nThe API does not check that cancellation rules are met, so the agent must make sure the rules apply before calling the API!\n\nRefund:\n- The refund will go to original payment methods within 5 to 7 business days.\n\n## Refunds and Compensation\nDo not proactively offer a compensation unless the user explicitly asks for one.\n\nDo not compensate if the user is regular member and has no travel insurance and flies (basic) economy.\n\nAlways confirms the facts before offering compensation.\n\nOnly compensate if the user is a silver/gold member or has travel insurance or flies business.\n\n- If the user complains about cancelled flights in a reservation, the agent can offer a certificate as a gesture after confirming the facts, with the amount being $100 times the number of passengers.\n\n- If the user complains about delayed flights in a reservation and wants to change or cancel the reservation, the agent can offer a certificate as a gesture after confirming the facts and changing or cancelling the reservation, with the amount being $50 times the number of passengers.\n\nDo not offer compensation for any other reason than the ones listed above.\n"
+}

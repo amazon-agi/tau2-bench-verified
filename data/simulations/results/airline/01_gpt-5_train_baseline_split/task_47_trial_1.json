@@ -1,0 +1,474 @@
+{
+  "id": "fd38c36f-bdcc-454c-92cb-62fcc5f4e2ae",
+  "task_id": "47",
+  "timestamp": "2026-07-12T17:14:21.662220",
+  "start_time": "2026-07-12T17:11:59.154134",
+  "end_time": "2026-07-12T17:14:21.662204",
+  "duration": 142.5043773749494,
+  "termination_reason": "user_stop",
+  "agent_cost": 0.08639025,
+  "user_cost": 0.0350825,
+  "reward_info": {
+    "reward": 1.0,
+    "db_check": {
+      "db_match": true,
+      "db_reward": 1.0
+    },
+    "env_assertions": [],
+    "action_checks": [
+      {
+        "action": {
+          "action_id": "47_0",
+          "requestor": "assistant",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "H8Q05L"
+          },
+          "info": null,
+          "compare_args": null
+        },
+        "action_match": true,
+        "action_reward": 1.0
+      }
+    ],
+    "nl_assertions": null,
+    "communicate_checks": null,
+    "reward_basis": [
+      "DB",
+      "COMMUNICATE"
+    ],
+    "reward_breakdown": {
+      "DB": 1.0,
+      "COMMUNICATE": 1.0
+    },
+    "info": {
+      "env": null,
+      "nl": null,
+      "communicate": {
+        "note": "No communicate_info to evaluate"
+      },
+      "action": null
+    }
+  },
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "tool_calls": null,
+      "turn_idx": 0,
+      "timestamp": "2026-07-12T17:11:59.348455",
+      "cost": 0.0,
+      "usage": null,
+      "raw_data": null
+    },
+    {
+      "role": "user",
+      "content": "Hi, I need to cancel my upcoming flight and get a full refund, please. Can you help with that?",
+      "tool_calls": null,
+      "turn_idx": 1,
+      "timestamp": "2026-07-12T17:12:11.809545",
+      "cost": 0.00342375,
+      "usage": {
+        "completion_tokens": 289,
+        "prompt_tokens": 427
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Hi, I need to cancel my upcoming flight and get a full refund, please. Can you help with that?",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"I can help with that. To proceed with cancelling your flight and assessing a full refund, please provide:\\n1) Your user ID\\n2) The reservation ID for the booking you want to cancel (if you don\u2019t have it, I can look it up once you provide your user ID)\\n3) Your reason for cancellation (choose one: change of plans, airline cancelled flight, or other \u2014 if other, please specify; if health or weather related and you purchased travel insurance, please note that)\\n4) Has any part of this trip already been flown? (yes/no)\"}",
+      "tool_calls": null,
+      "turn_idx": 2,
+      "timestamp": "2026-07-12T17:12:26.486608",
+      "cost": 0.01463875,
+      "usage": {
+        "completion_tokens": 1030,
+        "prompt_tokens": 3471
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"I can help with that. To proceed with cancelling your flight and assessing a full refund, please provide:\\n1) Your user ID\\n2) The reservation ID for the booking you want to cancel (if you don\u2019t have it, I can look it up once you provide your user ID)\\n3) Your reason for cancellation (choose one: change of plans, airline cancelled flight, or other \u2014 if other, please specify; if health or weather related and you purchased travel insurance, please note that)\\n4) Has any part of this trip already been flown? (yes/no)\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "Sure. Here\u2019s the info you asked for:\n1) User ID: sophia_silva_7557\n2) Confirmation number: H8Q05L\n3) Reason: Other \u2014 the flight conflicts with my best friend\u2019s birthday.\n4) Has any part been flown? No\n\nBefore you cancel anything, please confirm I\u2019ll get a full refund. I don\u2019t want to proceed unless it\u2019s fully refundable.",
+      "tool_calls": null,
+      "turn_idx": 3,
+      "timestamp": "2026-07-12T17:12:32.850552",
+      "cost": 0.0049,
+      "usage": {
+        "completion_tokens": 417,
+        "prompt_tokens": 584
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Sure. Here\u2019s the info you asked for:\n1) User ID: sophia_silva_7557\n2) Confirmation number: H8Q05L\n3) Reason: Other \u2014 the flight conflicts with my best friend\u2019s birthday.\n4) Has any part been flown? No\n\nBefore you cancel anything, please confirm I\u2019ll get a full refund. I don\u2019t want to proceed unless it\u2019s fully refundable.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_aXDD2HAgYa9oa58Pqqa1SGON",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "H8Q05L"
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 4,
+      "timestamp": "2026-07-12T17:12:39.769620",
+      "cost": 0.005021000000000001,
+      "usage": {
+        "completion_tokens": 415,
+        "prompt_tokens": 3692
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"reservation_id\":\"H8Q05L\"}",
+                "name": "get_reservation_details"
+              },
+              "id": "call_aXDD2HAgYa9oa58Pqqa1SGON",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_aXDD2HAgYa9oa58Pqqa1SGON",
+      "role": "tool",
+      "content": "{\"reservation_id\": \"H8Q05L\", \"user_id\": \"sophia_silva_7557\", \"origin\": \"JFK\", \"destination\": \"ATL\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT268\", \"origin\": \"JFK\", \"destination\": \"ATL\", \"date\": \"2024-05-24\", \"price\": 74}], \"passengers\": [{\"first_name\": \"Harper\", \"last_name\": \"Kovacs\", \"dob\": \"1973-10-26\"}], \"payment_history\": [{\"payment_id\": \"credit_card_4196779\", \"amount\": 104}], \"created_at\": \"2024-05-03T15:12:00\", \"total_baggages\": 0, \"nonfree_baggages\": 0, \"insurance\": \"yes\", \"status\": null}",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 5,
+      "timestamp": "2026-07-12T17:12:39.769737"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"Thanks for the details. Here\u2019s what I found for reservation H8Q05L (JFK \u2192 ATL on 2024-05-24, basic economy), booked on 2024-05-03. Travel insurance is on the reservation, and no segments have been flown.\\n\\nA full refund is available only if one of the following applies:\\n- The booking was made within the last 24 hours (not applicable here),\\n- The airline cancels the flight,\\n- The fare is business (this is basic economy), or\\n- You have travel insurance and the cancellation is due to a covered health or weather reason.\\n\\nYour stated reason (schedule conflict with a birthday) isn\u2019t covered by the insurance, and none of the other conditions currently apply, so I can\u2019t confirm or process a full refund based on the information provided.\\n\\nNext steps:\\n- I can check whether the airline has canceled your flight. If it has, you\u2019d be eligible for a full refund.\\n- If your cancellation is due to a health or weather reason, your insurance would enable a full refund.\\n\\nPlease let me know if you\u2019d like me to check the flight status for HAT268 on 2024-05-24, or if there\u2019s a covered reason you\u2019d like to use with your insurance. Otherwise, this basic economy reservation can\u2019t be modified, and a refundable cancellation isn\u2019t available.\"}",
+      "tool_calls": null,
+      "turn_idx": 6,
+      "timestamp": "2026-07-12T17:13:04.267194",
+      "cost": 0.023345,
+      "usage": {
+        "completion_tokens": 1843,
+        "prompt_tokens": 3932
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"Thanks for the details. Here\u2019s what I found for reservation H8Q05L (JFK \u2192 ATL on 2024-05-24, basic economy), booked on 2024-05-03. Travel insurance is on the reservation, and no segments have been flown.\\n\\nA full refund is available only if one of the following applies:\\n- The booking was made within the last 24 hours (not applicable here),\\n- The airline cancels the flight,\\n- The fare is business (this is basic economy), or\\n- You have travel insurance and the cancellation is due to a covered health or weather reason.\\n\\nYour stated reason (schedule conflict with a birthday) isn\u2019t covered by the insurance, and none of the other conditions currently apply, so I can\u2019t confirm or process a full refund based on the information provided.\\n\\nNext steps:\\n- I can check whether the airline has canceled your flight. If it has, you\u2019d be eligible for a full refund.\\n- If your cancellation is due to a health or weather reason, your insurance would enable a full refund.\\n\\nPlease let me know if you\u2019d like me to check the flight status for HAT268 on 2024-05-24, or if there\u2019s a covered reason you\u2019d like to use with your insurance. Otherwise, this basic economy reservation can\u2019t be modified, and a refundable cancellation isn\u2019t available.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "I understand the policy, but I really do need a full refund. Can you make a one-time exception or process a goodwill refund on this basic economy ticket? If not, I won\u2019t cancel.\n\nAlso, yes\u2014please check whether HAT268 on 2024-05-24 has been canceled or had any schedule changes that would make it eligible for a refund.",
+      "tool_calls": null,
+      "turn_idx": 7,
+      "timestamp": "2026-07-12T17:13:16.921944",
+      "cost": 0.0116725,
+      "usage": {
+        "completion_tokens": 1045,
+        "prompt_tokens": 978
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "I understand the policy, but I really do need a full refund. Can you make a one-time exception or process a goodwill refund on this basic economy ticket? If not, I won\u2019t cancel.\n\nAlso, yes\u2014please check whether HAT268 on 2024-05-24 has been canceled or had any schedule changes that would make it eligible for a refund.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_uHvPP40vBGAeEs2WglSEyAWo",
+          "name": "get_flight_status",
+          "arguments": {
+            "flight_number": "HAT268",
+            "date": "2024-05-24"
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 8,
+      "timestamp": "2026-07-12T17:13:26.059063",
+      "cost": 0.010252500000000001,
+      "usage": {
+        "completion_tokens": 486,
+        "prompt_tokens": 4314
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"flight_number\":\"HAT268\",\"date\":\"2024-05-24\"}",
+                "name": "get_flight_status"
+              },
+              "id": "call_uHvPP40vBGAeEs2WglSEyAWo",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_uHvPP40vBGAeEs2WglSEyAWo",
+      "role": "tool",
+      "content": "available",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 9,
+      "timestamp": "2026-07-12T17:13:26.059133"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"I\u2019ve checked your reservation and flight status.\\n\\n- Reservation H8Q05L: JFK \u2192 ATL on 2024-05-24, one-way basic economy, booked 2024-05-03, insurance included, no segments flown.\\n- Flight HAT268 on 2024-05-24: status is available (not canceled).\\n\\nPer our policy, a full refund is only available if: (1) the booking was made within the last 24 hours, (2) the airline cancels the flight, (3) the fare is business, or (4) you have travel insurance and the reason is covered (health or weather). A schedule conflict is not covered, and schedule changes do not qualify for a refund; only airline cancellations do. Since none of the qualifying conditions are met, I\u2019m not able to make a one-time exception or process a goodwill refund on this basic economy ticket.\\n\\nNothing has been canceled, and I won\u2019t proceed unless you explicitly confirm. If you\u2019d like, I can recheck the flight status again upon your request before departure. Let me know if you want me to do anything else.\"}",
+      "tool_calls": null,
+      "turn_idx": 10,
+      "timestamp": "2026-07-12T17:13:46.786296",
+      "cost": 0.020224750000000003,
+      "usage": {
+        "completion_tokens": 1852,
+        "prompt_tokens": 4359
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"I\u2019ve checked your reservation and flight status.\\n\\n- Reservation H8Q05L: JFK \u2192 ATL on 2024-05-24, one-way basic economy, booked 2024-05-03, insurance included, no segments flown.\\n- Flight HAT268 on 2024-05-24: status is available (not canceled).\\n\\nPer our policy, a full refund is only available if: (1) the booking was made within the last 24 hours, (2) the airline cancels the flight, (3) the fare is business, or (4) you have travel insurance and the reason is covered (health or weather). A schedule conflict is not covered, and schedule changes do not qualify for a refund; only airline cancellations do. Since none of the qualifying conditions are met, I\u2019m not able to make a one-time exception or process a goodwill refund on this basic economy ticket.\\n\\nNothing has been canceled, and I won\u2019t proceed unless you explicitly confirm. If you\u2019d like, I can recheck the flight status again upon your request before departure. Let me know if you want me to do anything else.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "Thanks for checking. I still need a full refund. Can you process a one\u2011time courtesy refund or apply any available waiver? If needed, please check with a supervisor for approval while keeping me on the line\u2014I don\u2019t want to be transferred. I won\u2019t cancel unless it\u2019s fully refundable.",
+      "tool_calls": null,
+      "turn_idx": 11,
+      "timestamp": "2026-07-12T17:14:01.800533",
+      "cost": 0.011291250000000003,
+      "usage": {
+        "completion_tokens": 966,
+        "prompt_tokens": 1305
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Thanks for checking. I still need a full refund. Can you process a one\u2011time courtesy refund or apply any available waiver? If needed, please check with a supervisor for approval while keeping me on the line\u2014I don\u2019t want to be transferred. I won\u2019t cancel unless it\u2019s fully refundable.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_vOgf6vNQN0Tfzmg9JJtm4ZoH",
+          "name": "transfer_to_human_agents",
+          "arguments": {
+            "summary": "User sophia_silva_7557 requests a full refund for reservation H8Q05L (JFK\u2192ATL on 2024-05-24, basic economy, booked 2024-05-03, insurance yes). Reason: schedule conflict (not covered by policy). Flight HAT268 status: available (not canceled). User requests a one-time courtesy refund/waiver and asks for supervisor approval without transfer. This exception cannot be handled within policy\u2014needs human approval."
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 12,
+      "timestamp": "2026-07-12T17:14:14.653870",
+      "cost": 0.010394750000000001,
+      "usage": {
+        "completion_tokens": 830,
+        "prompt_tokens": 4671
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"summary\":\"User sophia_silva_7557 requests a full refund for reservation H8Q05L (JFK\u2192ATL on 2024-05-24, basic economy, booked 2024-05-03, insurance yes). Reason: schedule conflict (not covered by policy). Flight HAT268 status: available (not canceled). User requests a one-time courtesy refund/waiver and asks for supervisor approval without transfer. This exception cannot be handled within policy\u2014needs human approval.\"}",
+                "name": "transfer_to_human_agents"
+              },
+              "id": "call_vOgf6vNQN0Tfzmg9JJtm4ZoH",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_vOgf6vNQN0Tfzmg9JJtm4ZoH",
+      "role": "tool",
+      "content": "Transfer successful",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 13,
+      "timestamp": "2026-07-12T17:14:14.654010"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.\"}",
+      "tool_calls": null,
+      "turn_idx": 14,
+      "timestamp": "2026-07-12T17:14:17.489920",
+      "cost": 0.0025135,
+      "usage": {
+        "completion_tokens": 25,
+        "prompt_tokens": 4806
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "###TRANSFER###",
+      "tool_calls": null,
+      "turn_idx": 15,
+      "timestamp": "2026-07-12T17:14:21.660472",
+      "cost": 0.0037950000000000006,
+      "usage": {
+        "completion_tokens": 205,
+        "prompt_tokens": 1396
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "###TRANSFER###",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    }
+  ],
+  "trial": 1,
+  "seed": 373753,
+  "system_prompt": "# Airline Agent Policy\n\nThe current time is 2024-05-15 15:00:00 EST.\n\nAs an airline agent, you can help users **book**, **modify**, or **cancel** flight reservations. You also handle **refunds and compensation**.\n\nBefore taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed.\n\nYou should not provide any information, knowledge, or procedures not provided by the user or available tools, or give subjective recommendations or comments.\n\nYou should only make one tool call at a time, and if you make a tool call, you should not respond to the user simultaneously. If you respond to the user, you should not make a tool call at the same time.\n\nYou should deny user requests that are against this policy.\n\nYou should transfer the user to a human agent if and only if the request cannot be handled within the scope of your actions. To transfer, first make a tool call to transfer_to_human_agents, and then send the message 'YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.' to the user.\n\n## Domain Basic\n\n### User\nEach user has a profile containing:\n- user id\n- email\n- addresses\n- date of birth\n- payment methods\n- membership level\n- reservation numbers\n\nThere are three types of payment methods: **credit card**, **gift card**, **travel certificate**.\n\nThere are three membership levels: **regular**, **silver**, **gold**.\n\n### Flight\nEach flight has the following attributes:\n- flight number\n- origin\n- destination\n- scheduled departure and arrival time (local time)\n\nA flight can be available at multiple dates. For each date:\n- If the status is **available**, the flight has not taken off, available seats and prices are listed.\n- If the status is **delayed** or **on time**, the flight has not taken off, cannot be booked.\n- If the status is **flying**, the flight has taken off but not landed, cannot be booked.\n\nThere are three cabin classes: **basic economy**, **economy**, **business**. **basic economy** is its own class, completely distinct from **economy**.\n\nSeat availability and prices are listed for each cabin class.\n\n### Reservation\nEach reservation specifies the following:\n- reservation id\n- user id\n- trip type\n- flights\n- passengers\n- payment methods\n- created time\n- baggages\n- travel insurance information\n\nThere are two types of trip: **one way** and **round trip**.\n\n## Book flight\n\nThe agent must first obtain the user id from the user. \n\nThe agent should then ask for the trip type, origin, destination.\n\nCabin:\n- Cabin class must be the same across all the flights in a reservation. \n\nPassengers: \n- Each reservation can have at most five passengers. \n- The agent needs to collect the first name, last name, and date of birth for each passenger. \n- All passengers must fly the same flights in the same cabin.\n\nPayment: \n- Each reservation can use at most one travel certificate, at most one credit card, and at most three gift cards. \n- The remaining amount of a travel certificate is not refundable. \n- All payment methods must already be in user profile for safety reasons.\n\nChecked bag allowance: \n- If the booking user is a regular member:\n  - 0 free checked bag for each basic economy passenger\n  - 1 free checked bag for each economy passenger\n  - 2 free checked bags for each business passenger\n- If the booking user is a silver member:\n  - 1 free checked bag for each basic economy passenger\n  - 2 free checked bag for each economy passenger\n  - 3 free checked bags for each business passenger\n- If the booking user is a gold member:\n  - 2 free checked bag for each basic economy passenger\n  - 3 free checked bag for each economy passenger\n  - 4 free checked bags for each business passenger\n- Each extra baggage is 50 dollars.\n\nDo not add checked bags that the user does not need.\n\nTravel insurance: \n- The agent should ask if the user wants to buy the travel insurance.\n- The travel insurance is 30 dollars per passenger and enables full refund if the user needs to cancel the flight given health or weather reasons.\n\n## Modify flight\n\nFirst, the agent must obtain the user id and reservation id. \n- The user must provide their user id. \n- If the user doesn't know their reservation id, the agent should help locate it using available tools.\n\nChange flights: \n- Basic economy flights cannot be modified.\n- Other reservations can be modified without changing the origin, destination, and trip type.\n- Some flight segments can be kept, but their prices will not be updated based on the current price.\n- The API does not check these for the agent, so the agent must make sure the rules apply before calling the API!\n\nChange cabin: \n- Cabin cannot be changed if any flight in the reservation has already been flown.\n- In other cases, all reservations, including basic economy, can change cabin without changing the flights.\n- Cabin class must remain the same across all the flights in the same reservation; changing cabin for just one flight segment is not possible.\n- If the price after cabin change is higher than the original price, the user is required to pay for the difference.\n- If the price after cabin change is lower than the original price, the user is should be refunded the difference.\n\nChange baggage and insurance: \n- The user can add but not remove checked bags.\n- The user cannot add insurance after initial booking.\n\nChange passengers:\n- The user can modify passengers but cannot modify the number of passengers.\n- Even a human agent cannot modify the number of passengers.\n\nPayment: \n- If the flights are changed, the user needs to provide a single gift card or credit card for payment or refund method. The payment method must already be in user profile for safety reasons.\n\n## Cancel flight\n\nFirst, the agent must obtain the user id and reservation id. \n- The user must provide their user id. \n- If the user doesn't know their reservation id, the agent should help locate it using available tools.\n\nThe agent must also obtain the reason for cancellation (change of plan, airline cancelled flight, or other reasons)\n\nIf any portion of the flight has already been flown, the agent cannot help and transfer is needed.\n\nOtherwise, flight can be cancelled if any of the following is true:\n- The booking was made within the last 24 hrs\n- The flight is cancelled by airline\n- It is a business flight\n- The user has travel insurance and the reason for cancellation is covered by insurance.\n\nThe API does not check that cancellation rules are met, so the agent must make sure the rules apply before calling the API!\n\nRefund:\n- The refund will go to original payment methods within 5 to 7 business days.\n\n## Refunds and Compensation\nDo not proactively offer a compensation unless the user explicitly asks for one.\n\nDo not compensate if the user is regular member and has no travel insurance and flies (basic) economy.\n\nAlways confirms the facts before offering compensation.\n\nOnly compensate if the user is a silver/gold member or has travel insurance or flies business.\n\n- If the user complains about cancelled flights in a reservation, the agent can offer a certificate as a gesture after confirming the facts, with the amount being $100 times the number of passengers.\n\n- If the user complains about delayed flights in a reservation and wants to change or cancel the reservation, the agent can offer a certificate as a gesture after confirming the facts and changing or cancelling the reservation, with the amount being $50 times the number of passengers.\n\nDo not offer compensation for any other reason than the ones listed above.\n"
+}

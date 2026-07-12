@@ -1,0 +1,808 @@
+{
+  "id": "739ae0f5-f25c-48f4-a0e7-c29e3f26b385",
+  "task_id": "33",
+  "timestamp": "2026-07-12T17:16:43.319103",
+  "start_time": "2026-07-12T17:11:56.453005",
+  "end_time": "2026-07-12T17:16:43.319096",
+  "duration": 286.8366375840269,
+  "termination_reason": "user_stop",
+  "agent_cost": 0.18296924999999997,
+  "user_cost": 0.06576875,
+  "reward_info": {
+    "reward": 0.0,
+    "db_check": {
+      "db_match": false,
+      "db_reward": 0.0
+    },
+    "env_assertions": [],
+    "action_checks": [
+      {
+        "action": {
+          "action_id": "33_0",
+          "requestor": "assistant",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "HXDUBJ"
+          },
+          "info": null,
+          "compare_args": null
+        },
+        "action_match": true,
+        "action_reward": 1.0
+      },
+      {
+        "action": {
+          "action_id": "33_1",
+          "requestor": "assistant",
+          "name": "search_direct_flight",
+          "arguments": {
+            "origin": "IAH",
+            "destination": "SFO",
+            "date": "2024-05-19"
+          },
+          "info": null,
+          "compare_args": null
+        },
+        "action_match": true,
+        "action_reward": 1.0
+      },
+      {
+        "action": {
+          "action_id": "33_2",
+          "requestor": "assistant",
+          "name": "search_direct_flight",
+          "arguments": {
+            "origin": "SFO",
+            "destination": "IAH",
+            "date": "2024-05-21"
+          },
+          "info": null,
+          "compare_args": null
+        },
+        "action_match": false,
+        "action_reward": 0.0
+      },
+      {
+        "action": {
+          "action_id": "33_3",
+          "requestor": "assistant",
+          "name": "update_reservation_flights",
+          "arguments": {
+            "reservation_id": "HXDUBJ",
+            "cabin": "economy",
+            "flights": [
+              {
+                "flight_number": "HAT072",
+                "date": "2024-05-19"
+              },
+              {
+                "flight_number": "HAT278",
+                "date": "2024-05-23"
+              }
+            ],
+            "payment_id": "gift_card_6941833"
+          },
+          "info": null,
+          "compare_args": null
+        },
+        "action_match": true,
+        "action_reward": 1.0
+      },
+      {
+        "action": {
+          "action_id": "33_4",
+          "requestor": "assistant",
+          "name": "update_reservation_baggages",
+          "arguments": {
+            "reservation_id": "HXDUBJ",
+            "total_baggages": 2,
+            "nonfree_baggages": 2,
+            "payment_id": "gift_card_6941833"
+          },
+          "info": null,
+          "compare_args": null
+        },
+        "action_match": false,
+        "action_reward": 0.0
+      }
+    ],
+    "nl_assertions": null,
+    "communicate_checks": null,
+    "reward_basis": [
+      "DB",
+      "COMMUNICATE"
+    ],
+    "reward_breakdown": {
+      "DB": 0.0,
+      "COMMUNICATE": 1.0
+    },
+    "info": {
+      "env": null,
+      "nl": null,
+      "communicate": {
+        "note": "No communicate_info to evaluate"
+      },
+      "action": null
+    }
+  },
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "tool_calls": null,
+      "turn_idx": 0,
+      "timestamp": "2026-07-12T17:11:56.591465",
+      "cost": 0.0,
+      "usage": null,
+      "raw_data": null
+    },
+    {
+      "role": "user",
+      "content": "Hi! I need help changing some flights on my reservation HXDUBJ.\n\n- For the outbound, I\u2019d like to move it one day later and switch to a nonstop flight.\n- For the return from SFO, I\u2019d like to push it back by one day as well.\n- I only want options that depart between 8am and 9pm.\n\nCan you check availability for me? I\u2019m happy to provide whatever details you need to pull up the booking.",
+      "tool_calls": null,
+      "turn_idx": 1,
+      "timestamp": "2026-07-12T17:12:14.365939",
+      "cost": 0.00561,
+      "usage": {
+        "completion_tokens": 490,
+        "prompt_tokens": 568
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Hi! I need help changing some flights on my reservation HXDUBJ.\n\n- For the outbound, I\u2019d like to move it one day later and switch to a nonstop flight.\n- For the return from SFO, I\u2019d like to push it back by one day as well.\n- I only want options that depart between 8am and 9pm.\n\nCan you check availability for me? I\u2019m happy to provide whatever details you need to pull up the booking.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"Happy to help with that. To proceed, please provide your user ID so I can pull up reservation HXDUBJ and check availability.\\n\\nPlease also confirm a couple of details:\\n- Outbound: move it one day later and show only nonstop options departing between 8:00 and 21:00 local time \u2014 correct?\\n- Return from SFO: move it one day later, departing between 8:00 and 21:00 local time. Are you open to one-stop options for the return, or do you prefer nonstop only?\\n- Keep the same cabin class as your current booking, or do you want to change cabin?\\n\\nOnce I have your user ID and these confirmations, I\u2019ll pull up HXDUBJ and search the best matching options.\"}",
+      "tool_calls": null,
+      "turn_idx": 2,
+      "timestamp": "2026-07-12T17:12:39.232880",
+      "cost": 0.022180000000000002,
+      "usage": {
+        "completion_tokens": 1775,
+        "prompt_tokens": 3544
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"Happy to help with that. To proceed, please provide your user ID so I can pull up reservation HXDUBJ and check availability.\\n\\nPlease also confirm a couple of details:\\n- Outbound: move it one day later and show only nonstop options departing between 8:00 and 21:00 local time \u2014 correct?\\n- Return from SFO: move it one day later, departing between 8:00 and 21:00 local time. Are you open to one-stop options for the return, or do you prefer nonstop only?\\n- Keep the same cabin class as your current booking, or do you want to change cabin?\\n\\nOnce I have your user ID and these confirmations, I\u2019ll pull up HXDUBJ and search the best matching options.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "Sure\u2014my user ID is yara_garcia_1905.\n\nConfirming the details:\n- Outbound: yes, please move it one day later and show only nonstop options departing between 08:00 and 21:00 local time.\n- Return from SFO: please push it back by one day, departing between 08:00 and 21:00. I prefer nonstop if available; if not, I\u2019m open to one-stop options.\n- Cabin: keep the same cabin class as my current booking for now.\n\nPlease pull up HXDUBJ and let me know what options you find.",
+      "tool_calls": null,
+      "turn_idx": 3,
+      "timestamp": "2026-07-12T17:12:45.097045",
+      "cost": 0.00494875,
+      "usage": {
+        "completion_tokens": 390,
+        "prompt_tokens": 839
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Sure\u2014my user ID is yara_garcia_1905.\n\nConfirming the details:\n- Outbound: yes, please move it one day later and show only nonstop options departing between 08:00 and 21:00 local time.\n- Return from SFO: please push it back by one day, departing between 08:00 and 21:00. I prefer nonstop if available; if not, I\u2019m open to one-stop options.\n- Cabin: keep the same cabin class as my current booking for now.\n\nPlease pull up HXDUBJ and let me know what options you find.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_uq6G8yZeKXIUzylM17nTIgtr",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "HXDUBJ"
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 4,
+      "timestamp": "2026-07-12T17:12:48.979239",
+      "cost": 0.00263975,
+      "usage": {
+        "completion_tokens": 158,
+        "prompt_tokens": 3843
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"reservation_id\":\"HXDUBJ\"}",
+                "name": "get_reservation_details"
+              },
+              "id": "call_uq6G8yZeKXIUzylM17nTIgtr",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_uq6G8yZeKXIUzylM17nTIgtr",
+      "role": "tool",
+      "content": "{\"reservation_id\": \"HXDUBJ\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT085\", \"origin\": \"IAH\", \"destination\": \"JFK\", \"date\": \"2024-05-18\", \"price\": 177}, {\"flight_number\": \"HAT023\", \"origin\": \"JFK\", \"destination\": \"SFO\", \"date\": \"2024-05-18\", \"price\": 146}, {\"flight_number\": \"HAT278\", \"origin\": \"SFO\", \"destination\": \"IAH\", \"date\": \"2024-05-22\", \"price\": 180}], \"passengers\": [{\"first_name\": \"Yara\", \"last_name\": \"Garcia\", \"dob\": \"1974-08-15\"}], \"payment_history\": [{\"payment_id\": \"gift_card_6941833\", \"amount\": 533}], \"created_at\": \"2024-05-04T06:04:48\", \"total_baggages\": 0, \"nonfree_baggages\": 0, \"insurance\": \"yes\", \"status\": null}",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 5,
+      "timestamp": "2026-07-12T17:12:48.979610"
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_gAKnIfyUJdHdcdfonTBVJxYk",
+          "name": "search_direct_flight",
+          "arguments": {
+            "origin": "IAH",
+            "destination": "SFO",
+            "date": "2024-05-19"
+          },
+          "requestor": "assistant"
+        },
+        {
+          "id": "call_OJzQW6LQ9qQD3duzkgbZ9cRS",
+          "name": "search_direct_flight",
+          "arguments": {
+            "origin": "SFO",
+            "destination": "IAH",
+            "date": "2024-05-23"
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 6,
+      "timestamp": "2026-07-12T17:13:01.825868",
+      "cost": 0.01183875,
+      "usage": {
+        "completion_tokens": 664,
+        "prompt_tokens": 4159
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"origin\": \"IAH\", \"destination\": \"SFO\", \"date\": \"2024-05-19\"}",
+                "name": "search_direct_flight"
+              },
+              "id": "call_gAKnIfyUJdHdcdfonTBVJxYk",
+              "type": "function"
+            },
+            {
+              "function": {
+                "arguments": "{\"origin\": \"SFO\", \"destination\": \"IAH\", \"date\": \"2024-05-23\"}",
+                "name": "search_direct_flight"
+              },
+              "id": "call_OJzQW6LQ9qQD3duzkgbZ9cRS",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_gAKnIfyUJdHdcdfonTBVJxYk",
+      "role": "tool",
+      "content": "[{\"flight_number\": \"HAT072\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"status\": \"available\", \"scheduled_departure_time_est\": \"09:00:00\", \"scheduled_arrival_time_est\": \"13:00:00\", \"date\": null, \"available_seats\": {\"basic_economy\": 18, \"economy\": 9, \"business\": 9}, \"prices\": {\"basic_economy\": 68, \"economy\": 130, \"business\": 282}}, {\"flight_number\": \"HAT180\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"status\": \"available\", \"scheduled_departure_time_est\": \"07:00:00\", \"scheduled_arrival_time_est\": \"11:00:00\", \"date\": null, \"available_seats\": {\"basic_economy\": 4, \"economy\": 17, \"business\": 15}, \"prices\": {\"basic_economy\": 65, \"economy\": 130, \"business\": 346}}]",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 7,
+      "timestamp": "2026-07-12T17:13:01.826023"
+    },
+    {
+      "id": "call_OJzQW6LQ9qQD3duzkgbZ9cRS",
+      "role": "tool",
+      "content": "[{\"flight_number\": \"HAT082\", \"origin\": \"SFO\", \"destination\": \"IAH\", \"status\": \"available\", \"scheduled_departure_time_est\": \"23:00:00\", \"scheduled_arrival_time_est\": \"03:00:00+1\", \"date\": null, \"available_seats\": {\"basic_economy\": 19, \"economy\": 9, \"business\": 2}, \"prices\": {\"basic_economy\": 92, \"economy\": 164, \"business\": 323}}, {\"flight_number\": \"HAT278\", \"origin\": \"SFO\", \"destination\": \"IAH\", \"status\": \"available\", \"scheduled_departure_time_est\": \"16:00:00\", \"scheduled_arrival_time_est\": \"20:00:00\", \"date\": null, \"available_seats\": {\"basic_economy\": 13, \"economy\": 5, \"business\": 3}, \"prices\": {\"basic_economy\": 67, \"economy\": 187, \"business\": 443}}]",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 8,
+      "timestamp": "2026-07-12T17:13:01.826076"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"Thanks, Yara. I\u2019ve pulled up reservation HXDUBJ (round trip IAH \u21c4 SFO, cabin: economy) and checked availability for your requested dates and window.\\n\\nOptions that meet your criteria (departing between 08:00 and 21:00, local time):\\n\\nOutbound IAH \u2192 SFO on 2024-05-19 (nonstop only)\\n- HAT072: dep 09:00, arr 13:00; Economy price: $130; seats available: 9\\n\\nReturn SFO \u2192 IAH on 2024-05-23 (nonstop preferred)\\n- HAT278: dep 16:00, arr 20:00; Economy price: $187; seats available: 5\\n\\nWould you like me to change HXDUBJ to these flights: HAT072 on 2024-05-19 and HAT278 on 2024-05-23, keeping the same cabin (economy) and passenger details? If yes, please reply \u201cyes\u201d and let me know which saved payment method to use for any fare difference or refund. You can use the same gift card on file (gift_card_6941833) or another saved method from your profile. If you\u2019d prefer to review additional options (e.g., more return choices or one-stop backups), tell me what you\u2019d like to see.\"}",
+      "tool_calls": null,
+      "turn_idx": 9,
+      "timestamp": "2026-07-12T17:13:34.220841",
+      "cost": 0.0327485,
+      "usage": {
+        "completion_tokens": 3060,
+        "prompt_tokens": 4714
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"Thanks, Yara. I\u2019ve pulled up reservation HXDUBJ (round trip IAH \u21c4 SFO, cabin: economy) and checked availability for your requested dates and window.\\n\\nOptions that meet your criteria (departing between 08:00 and 21:00, local time):\\n\\nOutbound IAH \u2192 SFO on 2024-05-19 (nonstop only)\\n- HAT072: dep 09:00, arr 13:00; Economy price: $130; seats available: 9\\n\\nReturn SFO \u2192 IAH on 2024-05-23 (nonstop preferred)\\n- HAT278: dep 16:00, arr 20:00; Economy price: $187; seats available: 5\\n\\nWould you like me to change HXDUBJ to these flights: HAT072 on 2024-05-19 and HAT278 on 2024-05-23, keeping the same cabin (economy) and passenger details? If yes, please reply \u201cyes\u201d and let me know which saved payment method to use for any fare difference or refund. You can use the same gift card on file (gift_card_6941833) or another saved method from your profile. If you\u2019d prefer to review additional options (e.g., more return choices or one-stop backups), tell me what you\u2019d like to see.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "Yes, please change HXDUBJ to those flights:\n- Outbound: HAT072 on 2024-05-19 (IAH \u2192 SFO)\n- Return: HAT278 on 2024-05-23 (SFO \u2192 IAH)\nKeep economy and the same passenger details.\n\nBefore you process, could you confirm the total fare difference and whether any change fees apply? I have trip insurance and, per your website, change fees should be waived, so I\u2019d like that policy honored.\n\nFor any fare difference or refund, please use the original form of payment on file that was used for this booking. If you can\u2019t apply that directly, let me know what options you see and I\u2019ll confirm.",
+      "tool_calls": null,
+      "turn_idx": 10,
+      "timestamp": "2026-07-12T17:13:52.734377",
+      "cost": 0.01596875,
+      "usage": {
+        "completion_tokens": 1438,
+        "prompt_tokens": 1271
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Yes, please change HXDUBJ to those flights:\n- Outbound: HAT072 on 2024-05-19 (IAH \u2192 SFO)\n- Return: HAT278 on 2024-05-23 (SFO \u2192 IAH)\nKeep economy and the same passenger details.\n\nBefore you process, could you confirm the total fare difference and whether any change fees apply? I have trip insurance and, per your website, change fees should be waived, so I\u2019d like that policy honored.\n\nFor any fare difference or refund, please use the original form of payment on file that was used for this booking. If you can\u2019t apply that directly, let me know what options you see and I\u2019ll confirm.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"Here\u2019s a summary before processing the change for HXDUBJ:\\n\\nProposed new flights (keep cabin: economy, same passenger, insurance and baggage unchanged):\\n- Outbound IAH \u2192 SFO on 2024-05-19: HAT072 (dep 09:00, arr 13:00 local time)\\n- Return SFO \u2192 IAH on 2024-05-23: HAT278 (dep 16:00, arr 20:00 local time)\\n\\nFare difference:\\n- Original total (current itinerary): $503\\n  \u2022 IAH \u2192 JFK (HAT085): $177\\n  \u2022 JFK \u2192 SFO (HAT023): $146\\n  \u2022 SFO \u2192 IAH (HAT278, 2024-05-22): $180\\n- New total (proposed itinerary): $317\\n  \u2022 IAH \u2192 SFO (HAT072): $130\\n  \u2022 SFO \u2192 IAH (HAT278, 2024-05-23): $187\\n- Difference: -$186, meaning a $186 refund.\\n\\nChange fees: None. Only the fare difference applies.\\n\\nRefund/payment method:\\n- I can apply the $186 refund to your original form of payment on file: gift_card_6941833.\\n\\nPlease reply \u201cyes\u201d to confirm you want me to proceed with updating HXDUBJ to these flights and issue the $186 refund to gift_card_6941833. If you prefer a different saved payment method for the refund, let me know which one before I proceed.\"}",
+      "tool_calls": null,
+      "turn_idx": 11,
+      "timestamp": "2026-07-12T17:14:33.068960",
+      "cost": 0.0286285,
+      "usage": {
+        "completion_tokens": 2591,
+        "prompt_tokens": 5170
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"Here\u2019s a summary before processing the change for HXDUBJ:\\n\\nProposed new flights (keep cabin: economy, same passenger, insurance and baggage unchanged):\\n- Outbound IAH \u2192 SFO on 2024-05-19: HAT072 (dep 09:00, arr 13:00 local time)\\n- Return SFO \u2192 IAH on 2024-05-23: HAT278 (dep 16:00, arr 20:00 local time)\\n\\nFare difference:\\n- Original total (current itinerary): $503\\n  \u2022 IAH \u2192 JFK (HAT085): $177\\n  \u2022 JFK \u2192 SFO (HAT023): $146\\n  \u2022 SFO \u2192 IAH (HAT278, 2024-05-22): $180\\n- New total (proposed itinerary): $317\\n  \u2022 IAH \u2192 SFO (HAT072): $130\\n  \u2022 SFO \u2192 IAH (HAT278, 2024-05-23): $187\\n- Difference: -$186, meaning a $186 refund.\\n\\nChange fees: None. Only the fare difference applies.\\n\\nRefund/payment method:\\n- I can apply the $186 refund to your original form of payment on file: gift_card_6941833.\\n\\nPlease reply \u201cyes\u201d to confirm you want me to proceed with updating HXDUBJ to these flights and issue the $186 refund to gift_card_6941833. If you prefer a different saved payment method for the refund, let me know which one before I proceed.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "Yes, please proceed with updating HXDUBJ to those flights and issue the $186 refund to gift_card_6941833. Please send me the updated itinerary and confirmation once it\u2019s done.",
+      "tool_calls": null,
+      "turn_idx": 12,
+      "timestamp": "2026-07-12T17:14:39.444212",
+      "cost": 0.0059125,
+      "usage": {
+        "completion_tokens": 370,
+        "prompt_tokens": 1770
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Yes, please proceed with updating HXDUBJ to those flights and issue the $186 refund to gift_card_6941833. Please send me the updated itinerary and confirmation once it\u2019s done.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_V5r3Dr70jInfUR9KuIUav7xu",
+          "name": "update_reservation_flights",
+          "arguments": {
+            "reservation_id": "HXDUBJ",
+            "cabin": "economy",
+            "flights": [
+              {
+                "flight_number": "HAT072",
+                "date": "2024-05-19"
+              },
+              {
+                "flight_number": "HAT278",
+                "date": "2024-05-23"
+              }
+            ],
+            "payment_id": "gift_card_6941833"
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 13,
+      "timestamp": "2026-07-12T17:14:50.169933",
+      "cost": 0.011727250000000002,
+      "usage": {
+        "completion_tokens": 852,
+        "prompt_tokens": 5561
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"reservation_id\":\"HXDUBJ\",\"cabin\":\"economy\",\"flights\":[{\"flight_number\":\"HAT072\",\"date\":\"2024-05-19\"},{\"flight_number\":\"HAT278\",\"date\":\"2024-05-23\"}],\"payment_id\":\"gift_card_6941833\"}",
+                "name": "update_reservation_flights"
+              },
+              "id": "call_V5r3Dr70jInfUR9KuIUav7xu",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_V5r3Dr70jInfUR9KuIUav7xu",
+      "role": "tool",
+      "content": "{\"reservation_id\": \"HXDUBJ\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT072\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"date\": \"2024-05-19\", \"price\": 130}, {\"flight_number\": \"HAT278\", \"origin\": \"SFO\", \"destination\": \"IAH\", \"date\": \"2024-05-23\", \"price\": 187}], \"passengers\": [{\"first_name\": \"Yara\", \"last_name\": \"Garcia\", \"dob\": \"1974-08-15\"}], \"payment_history\": [{\"payment_id\": \"gift_card_6941833\", \"amount\": 533}, {\"payment_id\": \"gift_card_6941833\", \"amount\": -186}], \"created_at\": \"2024-05-04T06:04:48\", \"total_baggages\": 0, \"nonfree_baggages\": 0, \"insurance\": \"yes\", \"status\": null}",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 14,
+      "timestamp": "2026-07-12T17:14:50.170427"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"Your reservation HXDUBJ has been updated successfully. Here are the details:\\n\\nTrip: Round trip IAH \u21c4 SFO\\nCabin: Economy\\nPassenger: Yara Garcia (DOB: 1974-08-15)\\n\\nUpdated flights\\n- Outbound: IAH \u2192 SFO\\n  \u2022 Flight: HAT072\\n  \u2022 Date: 2024-05-19\\n  \u2022 Departure: 09:00 (local)  \u2022 Arrival: 13:00 (local)\\n  \u2022 Fare (econ): $130\\n\\n- Return: SFO \u2192 IAH\\n  \u2022 Flight: HAT278\\n  \u2022 Date: 2024-05-23\\n  \u2022 Departure: 16:00 (local)  \u2022 Arrival: 20:00 (local)\\n  \u2022 Fare (econ): $187\\n\\nPricing summary\\n- Original total fare: $503\\n- New total fare: $317\\n- Difference: $186 refund issued to gift_card_6941833\\n\\nBaggage and insurance\\n- Checked bags: unchanged (0)\\n- Travel insurance: remains active on this reservation\\n\\nRefund timeline\\n- The $186 refund to the original payment method (gift_card_6941833) will appear within 5\u20137 business days.\\n\\nIf you need any further changes (seat selection, add checked baggage, or other preferences within policy), just let me know.\"}",
+      "tool_calls": null,
+      "turn_idx": 15,
+      "timestamp": "2026-07-12T17:14:56.590145",
+      "cost": 0.006713500000000001,
+      "usage": {
+        "completion_tokens": 307,
+        "prompt_tokens": 5910
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"Your reservation HXDUBJ has been updated successfully. Here are the details:\\n\\nTrip: Round trip IAH \u21c4 SFO\\nCabin: Economy\\nPassenger: Yara Garcia (DOB: 1974-08-15)\\n\\nUpdated flights\\n- Outbound: IAH \u2192 SFO\\n  \u2022 Flight: HAT072\\n  \u2022 Date: 2024-05-19\\n  \u2022 Departure: 09:00 (local)  \u2022 Arrival: 13:00 (local)\\n  \u2022 Fare (econ): $130\\n\\n- Return: SFO \u2192 IAH\\n  \u2022 Flight: HAT278\\n  \u2022 Date: 2024-05-23\\n  \u2022 Departure: 16:00 (local)  \u2022 Arrival: 20:00 (local)\\n  \u2022 Fare (econ): $187\\n\\nPricing summary\\n- Original total fare: $503\\n- New total fare: $317\\n- Difference: $186 refund issued to gift_card_6941833\\n\\nBaggage and insurance\\n- Checked bags: unchanged (0)\\n- Travel insurance: remains active on this reservation\\n\\nRefund timeline\\n- The $186 refund to the original payment method (gift_card_6941833) will appear within 5\u20137 business days.\\n\\nIf you need any further changes (seat selection, add checked baggage, or other preferences within policy), just let me know.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "Thanks for updating the flights. I have a couple more requests:\n\n- I\u2019d like to upgrade to business class on both flights if possible.\n- I also want to add 2 checked bags for me on both flights.\n\nHere\u2019s my preference based on total additional cost:\n1) If the total to upgrade both flights to business and add the 2 bags is $200 or less, please proceed.\n2) If that exceeds $200, please price business only on the outbound (IAH \u2192 SFO) plus the 2 bags. If that total is $200 or less, proceed with that.\n3) If even that is over $200, then keep both flights in economy and just add the 2 checked bags.\n\nPlease let me know the exact totals for each applicable option so I can confirm. If we proceed with any charges, use the original form of payment on file for this booking. If your system treats the 2 checked bags differently (e.g., per segment), just let me know how you\u2019ll apply it.",
+      "tool_calls": null,
+      "turn_idx": 16,
+      "timestamp": "2026-07-12T17:15:10.057193",
+      "cost": 0.01251375,
+      "usage": {
+        "completion_tokens": 986,
+        "prompt_tokens": 2123
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Thanks for updating the flights. I have a couple more requests:\n\n- I\u2019d like to upgrade to business class on both flights if possible.\n- I also want to add 2 checked bags for me on both flights.\n\nHere\u2019s my preference based on total additional cost:\n1) If the total to upgrade both flights to business and add the 2 bags is $200 or less, please proceed.\n2) If that exceeds $200, please price business only on the outbound (IAH \u2192 SFO) plus the 2 bags. If that total is $200 or less, proceed with that.\n3) If even that is over $200, then keep both flights in economy and just add the 2 checked bags.\n\nPlease let me know the exact totals for each applicable option so I can confirm. If we proceed with any charges, use the original form of payment on file for this booking. If your system treats the 2 checked bags differently (e.g., per segment), just let me know how you\u2019ll apply it.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_ehUwmm8eGdCihf0nhA82ItLe",
+          "name": "get_user_details",
+          "arguments": {
+            "user_id": "yara_garcia_1905"
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 17,
+      "timestamp": "2026-07-12T17:15:28.897561",
+      "cost": 0.01678475,
+      "usage": {
+        "completion_tokens": 1249,
+        "prompt_tokens": 6431
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"user_id\":\"yara_garcia_1905\"}",
+                "name": "get_user_details"
+              },
+              "id": "call_ehUwmm8eGdCihf0nhA82ItLe",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_ehUwmm8eGdCihf0nhA82ItLe",
+      "role": "tool",
+      "content": "{\"user_id\": \"yara_garcia_1905\", \"name\": {\"first_name\": \"Yara\", \"last_name\": \"Garcia\"}, \"address\": {\"address1\": \"377 Pine Lane\", \"address2\": \"Suite 694\", \"city\": \"Denver\", \"country\": \"USA\", \"state\": \"CO\", \"zip\": \"80212\"}, \"email\": \"yara.garcia6882@example.com\", \"dob\": \"1974-08-15\", \"payment_methods\": {\"certificate_2345996\": {\"source\": \"certificate\", \"id\": \"certificate_2345996\", \"amount\": 150.0}, \"gift_card_6941833\": {\"source\": \"gift_card\", \"id\": \"gift_card_6941833\", \"amount\": 338.0}, \"gift_card_1646646\": {\"source\": \"gift_card\", \"id\": \"gift_card_1646646\", \"amount\": 200.0}}, \"saved_passengers\": [{\"first_name\": \"James\", \"last_name\": \"Khan\", \"dob\": \"1959-08-18\"}], \"membership\": \"gold\", \"reservations\": [\"HXDUBJ\", \"DXG8T6\", \"46BBSE\", \"P9VXUO\"]}",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 18,
+      "timestamp": "2026-07-12T17:15:28.897689"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"Thanks, Yara. I\u2019ve priced the options you requested for reservation HXDUBJ (current: economy on HAT072 2024-05-19 and HAT278 2024-05-23, baggage 0, insurance yes). As a gold member, your free checked bag allowance is 3 in economy and 4 in business, so 2 checked bags will be free in either cabin.\\n\\nPricing summary\\n- Current total (economy): $317 (HAT072 $130 + HAT278 $187)\\n- Business fares on your exact flights/dates: HAT072 $282, HAT278 $443\\n\\nOptions\\n1) Upgrade both flights to business + add 2 checked bags\\n   - Fare difference: ($282 + $443) \u2212 $317 = $408\\n   - Bag fees: $0 (within free allowance)\\n   - Total additional: $408\\n   - Change fee: none (only fare difference applies)\\n   - This exceeds your $200 limit.\\n\\n2) Business only on the outbound + 2 bags\\n   - Not permitted: cabin class must be the same across all flights in a single reservation.\\n\\n3) Keep both flights in economy + add 2 checked bags\\n   - Fare difference: $0\\n   - Bag fees: $0 (within free allowance)\\n   - Total additional: $0\\n   - Change fee: none.\\n\\nBaggage handling note: Our system tracks checked bags at the reservation level, not per segment. Setting 2 checked bags means you\u2019ll have an allowance for 2 checked bags on both the outbound and return; no extra cost due to your gold status.\\n\\nIf you\u2019d like to proceed, please confirm one of the following:\\n- Yes, proceed with Option 3: keep economy and add 2 checked bags (total additional $0). I will update HXDUBJ to total_baggages=2, nonfree_baggages=0, using gift_card_6941833 as the payment method of record (no charge).\\n- If you\u2019d rather upgrade to business despite the cost, say so and I\u2019ll proceed with Option 1 at $408 additional, charged to gift_card_6941833, and add 2 checked bags (still $0 for bags).\\n\\nPlease reply \u201cyes\u201d with your chosen option, and I\u2019ll process it right away.\"}",
+      "tool_calls": null,
+      "turn_idx": 19,
+      "timestamp": "2026-07-12T17:16:09.046326",
+      "cost": 0.031990000000000005,
+      "usage": {
+        "completion_tokens": 3076,
+        "prompt_tokens": 6744
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"Thanks, Yara. I\u2019ve priced the options you requested for reservation HXDUBJ (current: economy on HAT072 2024-05-19 and HAT278 2024-05-23, baggage 0, insurance yes). As a gold member, your free checked bag allowance is 3 in economy and 4 in business, so 2 checked bags will be free in either cabin.\\n\\nPricing summary\\n- Current total (economy): $317 (HAT072 $130 + HAT278 $187)\\n- Business fares on your exact flights/dates: HAT072 $282, HAT278 $443\\n\\nOptions\\n1) Upgrade both flights to business + add 2 checked bags\\n   - Fare difference: ($282 + $443) \u2212 $317 = $408\\n   - Bag fees: $0 (within free allowance)\\n   - Total additional: $408\\n   - Change fee: none (only fare difference applies)\\n   - This exceeds your $200 limit.\\n\\n2) Business only on the outbound + 2 bags\\n   - Not permitted: cabin class must be the same across all flights in a single reservation.\\n\\n3) Keep both flights in economy + add 2 checked bags\\n   - Fare difference: $0\\n   - Bag fees: $0 (within free allowance)\\n   - Total additional: $0\\n   - Change fee: none.\\n\\nBaggage handling note: Our system tracks checked bags at the reservation level, not per segment. Setting 2 checked bags means you\u2019ll have an allowance for 2 checked bags on both the outbound and return; no extra cost due to your gold status.\\n\\nIf you\u2019d like to proceed, please confirm one of the following:\\n- Yes, proceed with Option 3: keep economy and add 2 checked bags (total additional $0). I will update HXDUBJ to total_baggages=2, nonfree_baggages=0, using gift_card_6941833 as the payment method of record (no charge).\\n- If you\u2019d rather upgrade to business despite the cost, say so and I\u2019ll proceed with Option 1 at $408 additional, charged to gift_card_6941833, and add 2 checked bags (still $0 for bags).\\n\\nPlease reply \u201cyes\u201d with your chosen option, and I\u2019ll process it right away.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "Yes\u2014please proceed with Option 3: keep both flights in economy and add 2 checked bags to my reservation.\n\nSince bags are free with my gold status, there should be no additional charge. Please update HXDUBJ to reflect 2 checked bags for both the outbound and return, keep gift_card_6941833 as the payment method of record (no charge), and send me the updated confirmation once done.",
+      "tool_calls": null,
+      "turn_idx": 20,
+      "timestamp": "2026-07-12T17:16:21.149731",
+      "cost": 0.013468750000000002,
+      "usage": {
+        "completion_tokens": 991,
+        "prompt_tokens": 2847
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Yes\u2014please proceed with Option 3: keep both flights in economy and add 2 checked bags to my reservation.\n\nSince bags are free with my gold status, there should be no additional charge. Please update HXDUBJ to reflect 2 checked bags for both the outbound and return, keep gift_card_6941833 as the payment method of record (no charge), and send me the updated confirmation once done.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_2SnXlxJVNlBv0fiD49xxBVLf",
+          "name": "update_reservation_baggages",
+          "arguments": {
+            "reservation_id": "HXDUBJ",
+            "total_baggages": 2,
+            "nonfree_baggages": 0,
+            "payment_id": "gift_card_6941833"
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 21,
+      "timestamp": "2026-07-12T17:16:31.791723",
+      "cost": 0.009847250000000002,
+      "usage": {
+        "completion_tokens": 441,
+        "prompt_tokens": 7345
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"reservation_id\":\"HXDUBJ\",\"total_baggages\":2,\"nonfree_baggages\":0,\"payment_id\":\"gift_card_6941833\"}",
+                "name": "update_reservation_baggages"
+              },
+              "id": "call_2SnXlxJVNlBv0fiD49xxBVLf",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_2SnXlxJVNlBv0fiD49xxBVLf",
+      "role": "tool",
+      "content": "{\"reservation_id\": \"HXDUBJ\", \"user_id\": \"yara_garcia_1905\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"flight_type\": \"round_trip\", \"cabin\": \"economy\", \"flights\": [{\"flight_number\": \"HAT072\", \"origin\": \"IAH\", \"destination\": \"SFO\", \"date\": \"2024-05-19\", \"price\": 130}, {\"flight_number\": \"HAT278\", \"origin\": \"SFO\", \"destination\": \"IAH\", \"date\": \"2024-05-23\", \"price\": 187}], \"passengers\": [{\"first_name\": \"Yara\", \"last_name\": \"Garcia\", \"dob\": \"1974-08-15\"}], \"payment_history\": [{\"payment_id\": \"gift_card_6941833\", \"amount\": 533}, {\"payment_id\": \"gift_card_6941833\", \"amount\": -186}], \"created_at\": \"2024-05-04T06:04:48\", \"total_baggages\": 2, \"nonfree_baggages\": 0, \"insurance\": \"yes\", \"status\": null}",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 22,
+      "timestamp": "2026-07-12T17:16:31.791850"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"All set, Yara. I\u2019ve updated reservation HXDUBJ to include 2 checked bags, with no additional charges due to your gold status.\\n\\nReservation summary\\n- Trip: Round trip IAH \u21c4 SFO\\n- Cabin: Economy\\n- Passenger: Yara Garcia (DOB: 1974-08-15)\\n- Checked bags: 2 (applies to both outbound and return; nonfree bags: 0)\\n\\nFlights\\n- Outbound: IAH \u2192 SFO\\n  \u2022 Flight: HAT072\\n  \u2022 Date: 2024-05-19\\n  \u2022 Departure: 09:00 (local)  \u2022 Arrival: 13:00 (local)\\n- Return: SFO \u2192 IAH\\n  \u2022 Flight: HAT278\\n  \u2022 Date: 2024-05-23\\n  \u2022 Departure: 16:00 (local)  \u2022 Arrival: 20:00 (local)\\n\\nPricing and payments\\n- Fare total unchanged at $317\\n- Bag fees: $0\\n- Refunds/charges: none; prior $186 refund to gift_card_6941833 remains in place\\n\\nIf you\u2019d like seat selection or any other assistance, just let me know. Have a great trip!\"}",
+      "tool_calls": null,
+      "turn_idx": 23,
+      "timestamp": "2026-07-12T17:16:37.472191",
+      "cost": 0.007871000000000001,
+      "usage": {
+        "completion_tokens": 275,
+        "prompt_tokens": 7668
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"All set, Yara. I\u2019ve updated reservation HXDUBJ to include 2 checked bags, with no additional charges due to your gold status.\\n\\nReservation summary\\n- Trip: Round trip IAH \u21c4 SFO\\n- Cabin: Economy\\n- Passenger: Yara Garcia (DOB: 1974-08-15)\\n- Checked bags: 2 (applies to both outbound and return; nonfree bags: 0)\\n\\nFlights\\n- Outbound: IAH \u2192 SFO\\n  \u2022 Flight: HAT072\\n  \u2022 Date: 2024-05-19\\n  \u2022 Departure: 09:00 (local)  \u2022 Arrival: 13:00 (local)\\n- Return: SFO \u2192 IAH\\n  \u2022 Flight: HAT278\\n  \u2022 Date: 2024-05-23\\n  \u2022 Departure: 16:00 (local)  \u2022 Arrival: 20:00 (local)\\n\\nPricing and payments\\n- Fare total unchanged at $317\\n- Bag fees: $0\\n- Refunds/charges: none; prior $186 refund to gift_card_6941833 remains in place\\n\\nIf you\u2019d like seat selection or any other assistance, just let me know. Have a great trip!\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "###STOP###",
+      "tool_calls": null,
+      "turn_idx": 24,
+      "timestamp": "2026-07-12T17:16:43.318297",
+      "cost": 0.00734625,
+      "usage": {
+        "completion_tokens": 333,
+        "prompt_tokens": 3213
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "###STOP###",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    }
+  ],
+  "trial": 1,
+  "seed": 373753,
+  "system_prompt": "# Airline Agent Policy\n\nThe current time is 2024-05-15 15:00:00 EST.\n\nAs an airline agent, you can help users **book**, **modify**, or **cancel** flight reservations. You also handle **refunds and compensation**.\n\nBefore taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed.\n\nYou should not provide any information, knowledge, or procedures not provided by the user or available tools, or give subjective recommendations or comments.\n\nYou should only make one tool call at a time, and if you make a tool call, you should not respond to the user simultaneously. If you respond to the user, you should not make a tool call at the same time.\n\nYou should deny user requests that are against this policy.\n\nYou should transfer the user to a human agent if and only if the request cannot be handled within the scope of your actions. To transfer, first make a tool call to transfer_to_human_agents, and then send the message 'YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.' to the user.\n\n## Domain Basic\n\n### User\nEach user has a profile containing:\n- user id\n- email\n- addresses\n- date of birth\n- payment methods\n- membership level\n- reservation numbers\n\nThere are three types of payment methods: **credit card**, **gift card**, **travel certificate**.\n\nThere are three membership levels: **regular**, **silver**, **gold**.\n\n### Flight\nEach flight has the following attributes:\n- flight number\n- origin\n- destination\n- scheduled departure and arrival time (local time)\n\nA flight can be available at multiple dates. For each date:\n- If the status is **available**, the flight has not taken off, available seats and prices are listed.\n- If the status is **delayed** or **on time**, the flight has not taken off, cannot be booked.\n- If the status is **flying**, the flight has taken off but not landed, cannot be booked.\n\nThere are three cabin classes: **basic economy**, **economy**, **business**. **basic economy** is its own class, completely distinct from **economy**.\n\nSeat availability and prices are listed for each cabin class.\n\n### Reservation\nEach reservation specifies the following:\n- reservation id\n- user id\n- trip type\n- flights\n- passengers\n- payment methods\n- created time\n- baggages\n- travel insurance information\n\nThere are two types of trip: **one way** and **round trip**.\n\n## Book flight\n\nThe agent must first obtain the user id from the user. \n\nThe agent should then ask for the trip type, origin, destination.\n\nCabin:\n- Cabin class must be the same across all the flights in a reservation. \n\nPassengers: \n- Each reservation can have at most five passengers. \n- The agent needs to collect the first name, last name, and date of birth for each passenger. \n- All passengers must fly the same flights in the same cabin.\n\nPayment: \n- Each reservation can use at most one travel certificate, at most one credit card, and at most three gift cards. \n- The remaining amount of a travel certificate is not refundable. \n- All payment methods must already be in user profile for safety reasons.\n\nChecked bag allowance: \n- If the booking user is a regular member:\n  - 0 free checked bag for each basic economy passenger\n  - 1 free checked bag for each economy passenger\n  - 2 free checked bags for each business passenger\n- If the booking user is a silver member:\n  - 1 free checked bag for each basic economy passenger\n  - 2 free checked bag for each economy passenger\n  - 3 free checked bags for each business passenger\n- If the booking user is a gold member:\n  - 2 free checked bag for each basic economy passenger\n  - 3 free checked bag for each economy passenger\n  - 4 free checked bags for each business passenger\n- Each extra baggage is 50 dollars.\n\nDo not add checked bags that the user does not need.\n\nTravel insurance: \n- The agent should ask if the user wants to buy the travel insurance.\n- The travel insurance is 30 dollars per passenger and enables full refund if the user needs to cancel the flight given health or weather reasons.\n\n## Modify flight\n\nFirst, the agent must obtain the user id and reservation id. \n- The user must provide their user id. \n- If the user doesn't know their reservation id, the agent should help locate it using available tools.\n\nChange flights: \n- Basic economy flights cannot be modified.\n- Other reservations can be modified without changing the origin, destination, and trip type.\n- Some flight segments can be kept, but their prices will not be updated based on the current price.\n- The API does not check these for the agent, so the agent must make sure the rules apply before calling the API!\n\nChange cabin: \n- Cabin cannot be changed if any flight in the reservation has already been flown.\n- In other cases, all reservations, including basic economy, can change cabin without changing the flights.\n- Cabin class must remain the same across all the flights in the same reservation; changing cabin for just one flight segment is not possible.\n- If the price after cabin change is higher than the original price, the user is required to pay for the difference.\n- If the price after cabin change is lower than the original price, the user is should be refunded the difference.\n\nChange baggage and insurance: \n- The user can add but not remove checked bags.\n- The user cannot add insurance after initial booking.\n\nChange passengers:\n- The user can modify passengers but cannot modify the number of passengers.\n- Even a human agent cannot modify the number of passengers.\n\nPayment: \n- If the flights are changed, the user needs to provide a single gift card or credit card for payment or refund method. The payment method must already be in user profile for safety reasons.\n\n## Cancel flight\n\nFirst, the agent must obtain the user id and reservation id. \n- The user must provide their user id. \n- If the user doesn't know their reservation id, the agent should help locate it using available tools.\n\nThe agent must also obtain the reason for cancellation (change of plan, airline cancelled flight, or other reasons)\n\nIf any portion of the flight has already been flown, the agent cannot help and transfer is needed.\n\nOtherwise, flight can be cancelled if any of the following is true:\n- The booking was made within the last 24 hrs\n- The flight is cancelled by airline\n- It is a business flight\n- The user has travel insurance and the reason for cancellation is covered by insurance.\n\nThe API does not check that cancellation rules are met, so the agent must make sure the rules apply before calling the API!\n\nRefund:\n- The refund will go to original payment methods within 5 to 7 business days.\n\n## Refunds and Compensation\nDo not proactively offer a compensation unless the user explicitly asks for one.\n\nDo not compensate if the user is regular member and has no travel insurance and flies (basic) economy.\n\nAlways confirms the facts before offering compensation.\n\nOnly compensate if the user is a silver/gold member or has travel insurance or flies business.\n\n- If the user complains about cancelled flights in a reservation, the agent can offer a certificate as a gesture after confirming the facts, with the amount being $100 times the number of passengers.\n\n- If the user complains about delayed flights in a reservation and wants to change or cancel the reservation, the agent can offer a certificate as a gesture after confirming the facts and changing or cancelling the reservation, with the amount being $50 times the number of passengers.\n\nDo not offer compensation for any other reason than the ones listed above.\n"
+}

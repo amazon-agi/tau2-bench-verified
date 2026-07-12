@@ -1,0 +1,433 @@
+{
+  "id": "f94ec372-139e-4d03-8216-07fea50540de",
+  "task_id": "28",
+  "timestamp": "2026-07-12T17:23:34.773790",
+  "start_time": "2026-07-12T17:20:56.881589",
+  "end_time": "2026-07-12T17:23:34.773785",
+  "duration": 157.88869204197545,
+  "termination_reason": "user_stop",
+  "agent_cost": 0.09719099999999999,
+  "user_cost": 0.04272625,
+  "reward_info": {
+    "reward": 1.0,
+    "db_check": {
+      "db_match": true,
+      "db_reward": 1.0
+    },
+    "env_assertions": [],
+    "action_checks": null,
+    "nl_assertions": null,
+    "communicate_checks": null,
+    "reward_basis": [
+      "DB",
+      "COMMUNICATE"
+    ],
+    "reward_breakdown": {
+      "DB": 1.0,
+      "COMMUNICATE": 1.0
+    },
+    "info": {
+      "env": null,
+      "nl": null,
+      "communicate": {
+        "note": "No communicate_info to evaluate"
+      },
+      "action": {
+        "note": "No actions to evaluate"
+      }
+    }
+  },
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "tool_calls": null,
+      "turn_idx": 0,
+      "timestamp": "2026-07-12T17:20:56.881826",
+      "cost": 0.0,
+      "usage": null,
+      "raw_data": null
+    },
+    {
+      "role": "user",
+      "content": "Hi there. I need to cancel my flights under reservation SI5UKW and I\u2019d like a refund to my original form of payment. Can you help me with that? If a full refund isn\u2019t possible, please let me know what options you can offer, like a travel credit or gift card.",
+      "tool_calls": null,
+      "turn_idx": 1,
+      "timestamp": "2026-07-12T17:21:05.969089",
+      "cost": 0.00700375,
+      "usage": {
+        "completion_tokens": 647,
+        "prompt_tokens": 427
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Hi there. I need to cancel my flights under reservation SI5UKW and I\u2019d like a refund to my original form of payment. Can you help me with that? If a full refund isn\u2019t possible, please let me know what options you can offer, like a travel credit or gift card.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"I can help with that. To proceed, please provide:\\n- Your user ID (for security)\\n- Your reason for cancellation: change of plan, airline cancelled the flight, or other (please specify; if health- or weather-related, please note that)\\n\\nOnce I have that, I\u2019ll review reservation SI5UKW to confirm eligibility. A full refund is possible if any of the following apply: the booking was made within the last 24 hours, the fare is business, the airline cancelled the flight, or you have travel insurance and the reason is health/weather-related. I\u2019ll also check that no part of the trip has already been flown, since we can\u2019t process cancellations after travel has begun.\\n\\nRefunds go back to the original payment method within 5\u20137 business days. If a full refund isn\u2019t eligible: we generally don\u2019t issue gift cards or credits for voluntary cancellations. However, if your flights were cancelled by us or delayed, and you\u2019re eligible (for example, silver/gold member, have travel insurance, or booked business), we may be able to offer a travel certificate\u2014I\u2019ll verify after checking your booking.\\n\\nPlease also confirm that you want me to cancel the entire reservation SI5UKW once I\u2019ve confirmed eligibility.\"}",
+      "tool_calls": null,
+      "turn_idx": 2,
+      "timestamp": "2026-07-12T17:21:37.268559",
+      "cost": 0.02898225,
+      "usage": {
+        "completion_tokens": 2834,
+        "prompt_tokens": 3509
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"I can help with that. To proceed, please provide:\\n- Your user ID (for security)\\n- Your reason for cancellation: change of plan, airline cancelled the flight, or other (please specify; if health- or weather-related, please note that)\\n\\nOnce I have that, I\u2019ll review reservation SI5UKW to confirm eligibility. A full refund is possible if any of the following apply: the booking was made within the last 24 hours, the fare is business, the airline cancelled the flight, or you have travel insurance and the reason is health/weather-related. I\u2019ll also check that no part of the trip has already been flown, since we can\u2019t process cancellations after travel has begun.\\n\\nRefunds go back to the original payment method within 5\u20137 business days. If a full refund isn\u2019t eligible: we generally don\u2019t issue gift cards or credits for voluntary cancellations. However, if your flights were cancelled by us or delayed, and you\u2019re eligible (for example, silver/gold member, have travel insurance, or booked business), we may be able to offer a travel certificate\u2014I\u2019ll verify after checking your booking.\\n\\nPlease also confirm that you want me to cancel the entire reservation SI5UKW once I\u2019ve confirmed eligibility.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "Sure\u2014here\u2019s what you asked for:\n\n- User ID: amelia_rossi_1297\n- Reason for cancellation: change of plans\n\nPlease review reservation SI5UKW and let me know the eligibility. My preference is a refund to the original form of payment. If that\u2019s not possible, I\u2019d like a travel credit or gift card. If credits aren\u2019t typically offered, please check for any exceptions or goodwill options\u2014alternatively, I\u2019m willing to accept a partial refund (ideally 50%; if that\u2019s not possible, please let me know the best you can do).\n\nOnce you\u2019ve confirmed what refund/credit options are available, yes\u2014please proceed to cancel the entire reservation SI5UKW.",
+      "tool_calls": null,
+      "turn_idx": 3,
+      "timestamp": "2026-07-12T17:21:51.704478",
+      "cost": 0.0134125,
+      "usage": {
+        "completion_tokens": 1246,
+        "prompt_tokens": 762
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "Sure\u2014here\u2019s what you asked for:\n\n- User ID: amelia_rossi_1297\n- Reason for cancellation: change of plans\n\nPlease review reservation SI5UKW and let me know the eligibility. My preference is a refund to the original form of payment. If that\u2019s not possible, I\u2019d like a travel credit or gift card. If credits aren\u2019t typically offered, please check for any exceptions or goodwill options\u2014alternatively, I\u2019m willing to accept a partial refund (ideally 50%; if that\u2019s not possible, please let me know the best you can do).\n\nOnce you\u2019ve confirmed what refund/credit options are available, yes\u2014please proceed to cancel the entire reservation SI5UKW.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_PcoQpdkT4whvv4yn5DiVK05R",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "SI5UKW"
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 4,
+      "timestamp": "2026-07-12T17:21:58.242366",
+      "cost": 0.00594975,
+      "usage": {
+        "completion_tokens": 478,
+        "prompt_tokens": 3931
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"reservation_id\":\"SI5UKW\"}",
+                "name": "get_reservation_details"
+              },
+              "id": "call_PcoQpdkT4whvv4yn5DiVK05R",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_PcoQpdkT4whvv4yn5DiVK05R",
+      "role": "tool",
+      "content": "{\"reservation_id\": \"SI5UKW\", \"user_id\": \"amelia_rossi_1297\", \"origin\": \"MIA\", \"destination\": \"PHX\", \"flight_type\": \"one_way\", \"cabin\": \"basic_economy\", \"flights\": [{\"flight_number\": \"HAT062\", \"origin\": \"MIA\", \"destination\": \"LAS\", \"date\": \"2024-05-16\", \"price\": 67}, {\"flight_number\": \"HAT284\", \"origin\": \"LAS\", \"destination\": \"PHX\", \"date\": \"2024-05-17\", \"price\": 57}], \"passengers\": [{\"first_name\": \"Amelia\", \"last_name\": \"Rossi\", \"dob\": \"1960-01-19\"}], \"payment_history\": [{\"payment_id\": \"credit_card_4579924\", \"amount\": 124}], \"created_at\": \"2024-05-11T00:08:57\", \"total_baggages\": 0, \"nonfree_baggages\": 0, \"insurance\": \"no\", \"status\": null}",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 5,
+      "timestamp": "2026-07-12T17:21:58.242505"
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_61wAHcnSTbrMJhUlkvRI3jx3",
+          "name": "get_flight_status",
+          "arguments": {
+            "flight_number": "HAT062",
+            "date": "2024-05-16"
+          },
+          "requestor": "assistant"
+        },
+        {
+          "id": "call_gu5n8vM1n0PxoAOIKsYqGf9H",
+          "name": "get_flight_status",
+          "arguments": {
+            "flight_number": "HAT284",
+            "date": "2024-05-17"
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 6,
+      "timestamp": "2026-07-12T17:22:12.160118",
+      "cost": 0.01385475,
+      "usage": {
+        "completion_tokens": 1234,
+        "prompt_tokens": 4207
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"flight_number\": \"HAT062\", \"date\": \"2024-05-16\"}",
+                "name": "get_flight_status"
+              },
+              "id": "call_61wAHcnSTbrMJhUlkvRI3jx3",
+              "type": "function"
+            },
+            {
+              "function": {
+                "arguments": "{\"flight_number\": \"HAT284\", \"date\": \"2024-05-17\"}",
+                "name": "get_flight_status"
+              },
+              "id": "call_gu5n8vM1n0PxoAOIKsYqGf9H",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_61wAHcnSTbrMJhUlkvRI3jx3",
+      "role": "tool",
+      "content": "available",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 7,
+      "timestamp": "2026-07-12T17:22:12.160184"
+    },
+    {
+      "id": "call_gu5n8vM1n0PxoAOIKsYqGf9H",
+      "role": "tool",
+      "content": "available",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 8,
+      "timestamp": "2026-07-12T17:22:12.160196"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"I\u2019ve reviewed reservation SI5UKW for user amelia_rossi_1297.\\n\\nReservation summary:\\n- Trip: MIA \u2192 PHX (one-way) with a connection\\n  - HAT062: MIA \u2192 LAS on 2024-05-16\\n  - HAT284: LAS \u2192 PHX on 2024-05-17\\n- Cabin: Basic Economy\\n- Passengers: 1 (Amelia Rossi)\\n- Booking date: 2024-05-11\\n- Insurance: No\\n- Payment: Credit card (total paid $124)\\n- Flight status: Not cancelled; not yet flown\\n\\nCancellation eligibility (per policy):\\n- Not booked within the last 24 hours\\n- Not a business fare\\n- Airline did not cancel the flights\\n- No travel insurance covering the stated reason (change of plans)\\n\\nBecause none of the cancellation criteria are met, I\u2019m unable to cancel this reservation or issue a refund. Additionally, for voluntary cancellations like this, travel credits/gift cards or partial refunds are not available, and Basic Economy cannot be modified.\\n\\nI understand this isn\u2019t the outcome you were hoping for. If there\u2019s anything else I can check (for example, other existing reservations), please let me know.\"}",
+      "tool_calls": null,
+      "turn_idx": 9,
+      "timestamp": "2026-07-12T17:22:33.315912",
+      "cost": 0.020452249999999998,
+      "usage": {
+        "completion_tokens": 1882,
+        "prompt_tokens": 4301
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"I\u2019ve reviewed reservation SI5UKW for user amelia_rossi_1297.\\n\\nReservation summary:\\n- Trip: MIA \u2192 PHX (one-way) with a connection\\n  - HAT062: MIA \u2192 LAS on 2024-05-16\\n  - HAT284: LAS \u2192 PHX on 2024-05-17\\n- Cabin: Basic Economy\\n- Passengers: 1 (Amelia Rossi)\\n- Booking date: 2024-05-11\\n- Insurance: No\\n- Payment: Credit card (total paid $124)\\n- Flight status: Not cancelled; not yet flown\\n\\nCancellation eligibility (per policy):\\n- Not booked within the last 24 hours\\n- Not a business fare\\n- Airline did not cancel the flights\\n- No travel insurance covering the stated reason (change of plans)\\n\\nBecause none of the cancellation criteria are met, I\u2019m unable to cancel this reservation or issue a refund. Additionally, for voluntary cancellations like this, travel credits/gift cards or partial refunds are not available, and Basic Economy cannot be modified.\\n\\nI understand this isn\u2019t the outcome you were hoping for. If there\u2019s anything else I can check (for example, other existing reservations), please let me know.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "I appreciate you checking, but \u201cno options\u201d isn\u2019t workable for me. Please take a second look and see what exceptions or goodwill solutions you can offer.\n\nHere\u2019s what I\u2019d like you to review and confirm:\n- Were there any schedule changes since ticketing on either HAT062 or HAT284? If there was a significant change or extended layover added, that should qualify me for a refund.\n- Are there any discretionary waivers, manager overrides, or customer relations goodwill certificates you can apply? I\u2019m asking for a full-value travel voucher or gift card if you can\u2019t refund to my card.\n- If you absolutely can\u2019t do a full voucher, please offer a partial refund\u2014targeting 50%. If that\u2019s still a no, what\u2019s the best you can do as a goodwill credit? I\u2019m unwilling to walk away with nothing; at a minimum I expect at least 10% back as a credit.\n- If you can\u2019t do any of the above, can you at least refund any refundable government taxes/fees on the unused ticket?\n\nIf your tools won\u2019t allow it, please escalate to a supervisor or customer relations right now and note that I\u2019m requesting a goodwill exception for basic economy due to a voluntary cancellation.\n\nI\u2019m a reasonable customer, but if we truly can\u2019t resolve this, I\u2019ll need to pursue a dispute with my card issuer and file a formal complaint with DOT; I\u2019d much rather resolve directly with you today.\n\nPlease let me know what you can do immediately. Once you confirm the best refund/credit option available, I\u2019ll authorize cancelling the entire reservation SI5UKW.",
+      "tool_calls": null,
+      "turn_idx": 10,
+      "timestamp": "2026-07-12T17:22:55.755907",
+      "cost": 0.01896,
+      "usage": {
+        "completion_tokens": 1747,
+        "prompt_tokens": 1192
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "I appreciate you checking, but \u201cno options\u201d isn\u2019t workable for me. Please take a second look and see what exceptions or goodwill solutions you can offer.\n\nHere\u2019s what I\u2019d like you to review and confirm:\n- Were there any schedule changes since ticketing on either HAT062 or HAT284? If there was a significant change or extended layover added, that should qualify me for a refund.\n- Are there any discretionary waivers, manager overrides, or customer relations goodwill certificates you can apply? I\u2019m asking for a full-value travel voucher or gift card if you can\u2019t refund to my card.\n- If you absolutely can\u2019t do a full voucher, please offer a partial refund\u2014targeting 50%. If that\u2019s still a no, what\u2019s the best you can do as a goodwill credit? I\u2019m unwilling to walk away with nothing; at a minimum I expect at least 10% back as a credit.\n- If you can\u2019t do any of the above, can you at least refund any refundable government taxes/fees on the unused ticket?\n\nIf your tools won\u2019t allow it, please escalate to a supervisor or customer relations right now and note that I\u2019m requesting a goodwill exception for basic economy due to a voluntary cancellation.\n\nI\u2019m a reasonable customer, but if we truly can\u2019t resolve this, I\u2019ll need to pursue a dispute with my card issuer and file a formal complaint with DOT; I\u2019d much rather resolve directly with you today.\n\nPlease let me know what you can do immediately. Once you confirm the best refund/credit option available, I\u2019ll authorize cancelling the entire reservation SI5UKW.",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_ZlnwChky9htTb3Y0XZNjErPm",
+          "name": "transfer_to_human_agents",
+          "arguments": {
+            "summary": "User amelia_rossi_1297 requests cancellation of reservation SI5UKW (MIA\u2192LAS 2024-05-16 HAT062; LAS\u2192PHX 2024-05-17 HAT284). Basic Economy, one passenger, booked 2024-05-11, no insurance, paid $124 via credit card. Flights currently not cancelled or delayed (status available). Reason: change of plans. Per policy, not eligible for refund or cancellation. User insists on exceptions: asks to check for any schedule changes since ticketing, requests discretionary waiver/manager override for full travel voucher/gift card; if not, partial refund (target 50%, at least 10% goodwill), or refund of any refundable taxes/fees. Our tools cannot verify schedule-change history or grant discretionary goodwill. Please review for goodwill exception and confirm any available credits/refunds. User requests immediate escalation to supervisor/customer relations."
+          },
+          "requestor": "assistant"
+        }
+      ],
+      "turn_idx": 11,
+      "timestamp": "2026-07-12T17:23:27.112914",
+      "cost": 0.025026,
+      "usage": {
+        "completion_tokens": 2263,
+        "prompt_tokens": 4912
+      },
+      "raw_data": {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "message": {
+          "content": null,
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "function": {
+                "arguments": "{\"summary\":\"User amelia_rossi_1297 requests cancellation of reservation SI5UKW (MIA\u2192LAS 2024-05-16 HAT062; LAS\u2192PHX 2024-05-17 HAT284). Basic Economy, one passenger, booked 2024-05-11, no insurance, paid $124 via credit card. Flights currently not cancelled or delayed (status available). Reason: change of plans. Per policy, not eligible for refund or cancellation. User insists on exceptions: asks to check for any schedule changes since ticketing, requests discretionary waiver/manager override for full travel voucher/gift card; if not, partial refund (target 50%, at least 10% goodwill), or refund of any refundable taxes/fees. Our tools cannot verify schedule-change history or grant discretionary goodwill. Please review for goodwill exception and confirm any available credits/refunds. User requests immediate escalation to supervisor/customer relations.\"}",
+                "name": "transfer_to_human_agents"
+              },
+              "id": "call_ZlnwChky9htTb3Y0XZNjErPm",
+              "type": "function"
+            }
+          ],
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "id": "call_ZlnwChky9htTb3Y0XZNjErPm",
+      "role": "tool",
+      "content": "Transfer successful",
+      "requestor": "assistant",
+      "error": false,
+      "turn_idx": 12,
+      "timestamp": "2026-07-12T17:23:27.112977"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"message\":\"YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.\"}",
+      "tool_calls": null,
+      "turn_idx": 13,
+      "timestamp": "2026-07-12T17:23:31.854865",
+      "cost": 0.0029260000000000006,
+      "usage": {
+        "completion_tokens": 25,
+        "prompt_tokens": 5136
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "{\"message\":\"YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.\"}",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    },
+    {
+      "role": "user",
+      "content": "###TRANSFER###",
+      "tool_calls": null,
+      "turn_idx": 14,
+      "timestamp": "2026-07-12T17:23:34.773368",
+      "cost": 0.0033500000000000005,
+      "usage": {
+        "completion_tokens": 141,
+        "prompt_tokens": 1552
+      },
+      "raw_data": {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "content": "###TRANSFER###",
+          "role": "assistant",
+          "tool_calls": null,
+          "function_call": null,
+          "provider_specific_fields": {
+            "refusal": null
+          },
+          "annotations": []
+        },
+        "provider_specific_fields": {}
+      }
+    }
+  ],
+  "trial": 9,
+  "seed": 444018,
+  "system_prompt": "# Airline Agent Policy\n\nThe current time is 2024-05-15 15:00:00 EST.\n\nAs an airline agent, you can help users **book**, **modify**, or **cancel** flight reservations. You also handle **refunds and compensation**.\n\nBefore taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed.\n\nYou should not provide any information, knowledge, or procedures not provided by the user or available tools, or give subjective recommendations or comments.\n\nYou should only make one tool call at a time, and if you make a tool call, you should not respond to the user simultaneously. If you respond to the user, you should not make a tool call at the same time.\n\nYou should deny user requests that are against this policy.\n\nYou should transfer the user to a human agent if and only if the request cannot be handled within the scope of your actions. To transfer, first make a tool call to transfer_to_human_agents, and then send the message 'YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.' to the user.\n\n## Domain Basic\n\n### User\nEach user has a profile containing:\n- user id\n- email\n- addresses\n- date of birth\n- payment methods\n- membership level\n- reservation numbers\n\nThere are three types of payment methods: **credit card**, **gift card**, **travel certificate**.\n\nThere are three membership levels: **regular**, **silver**, **gold**.\n\n### Flight\nEach flight has the following attributes:\n- flight number\n- origin\n- destination\n- scheduled departure and arrival time (local time)\n\nA flight can be available at multiple dates. For each date:\n- If the status is **available**, the flight has not taken off, available seats and prices are listed.\n- If the status is **delayed** or **on time**, the flight has not taken off, cannot be booked.\n- If the status is **flying**, the flight has taken off but not landed, cannot be booked.\n\nThere are three cabin classes: **basic economy**, **economy**, **business**. **basic economy** is its own class, completely distinct from **economy**.\n\nSeat availability and prices are listed for each cabin class.\n\n### Reservation\nEach reservation specifies the following:\n- reservation id\n- user id\n- trip type\n- flights\n- passengers\n- payment methods\n- created time\n- baggages\n- travel insurance information\n\nThere are two types of trip: **one way** and **round trip**.\n\n## Book flight\n\nThe agent must first obtain the user id from the user. \n\nThe agent should then ask for the trip type, origin, destination.\n\nCabin:\n- Cabin class must be the same across all the flights in a reservation. \n\nPassengers: \n- Each reservation can have at most five passengers. \n- The agent needs to collect the first name, last name, and date of birth for each passenger. \n- All passengers must fly the same flights in the same cabin.\n\nPayment: \n- Each reservation can use at most one travel certificate, at most one credit card, and at most three gift cards. \n- The remaining amount of a travel certificate is not refundable. \n- All payment methods must already be in user profile for safety reasons.\n\nChecked bag allowance: \n- If the booking user is a regular member:\n  - 0 free checked bag for each basic economy passenger\n  - 1 free checked bag for each economy passenger\n  - 2 free checked bags for each business passenger\n- If the booking user is a silver member:\n  - 1 free checked bag for each basic economy passenger\n  - 2 free checked bag for each economy passenger\n  - 3 free checked bags for each business passenger\n- If the booking user is a gold member:\n  - 2 free checked bag for each basic economy passenger\n  - 3 free checked bag for each economy passenger\n  - 4 free checked bags for each business passenger\n- Each extra baggage is 50 dollars.\n\nDo not add checked bags that the user does not need.\n\nTravel insurance: \n- The agent should ask if the user wants to buy the travel insurance.\n- The travel insurance is 30 dollars per passenger and enables full refund if the user needs to cancel the flight given health or weather reasons.\n\n## Modify flight\n\nFirst, the agent must obtain the user id and reservation id. \n- The user must provide their user id. \n- If the user doesn't know their reservation id, the agent should help locate it using available tools.\n\nChange flights: \n- Basic economy flights cannot be modified.\n- Other reservations can be modified without changing the origin, destination, and trip type.\n- Some flight segments can be kept, but their prices will not be updated based on the current price.\n- The API does not check these for the agent, so the agent must make sure the rules apply before calling the API!\n\nChange cabin: \n- Cabin cannot be changed if any flight in the reservation has already been flown.\n- In other cases, all reservations, including basic economy, can change cabin without changing the flights.\n- Cabin class must remain the same across all the flights in the same reservation; changing cabin for just one flight segment is not possible.\n- If the price after cabin change is higher than the original price, the user is required to pay for the difference.\n- If the price after cabin change is lower than the original price, the user is should be refunded the difference.\n\nChange baggage and insurance: \n- The user can add but not remove checked bags.\n- The user cannot add insurance after initial booking.\n\nChange passengers:\n- The user can modify passengers but cannot modify the number of passengers.\n- Even a human agent cannot modify the number of passengers.\n\nPayment: \n- If the flights are changed, the user needs to provide a single gift card or credit card for payment or refund method. The payment method must already be in user profile for safety reasons.\n\n## Cancel flight\n\nFirst, the agent must obtain the user id and reservation id. \n- The user must provide their user id. \n- If the user doesn't know their reservation id, the agent should help locate it using available tools.\n\nThe agent must also obtain the reason for cancellation (change of plan, airline cancelled flight, or other reasons)\n\nIf any portion of the flight has already been flown, the agent cannot help and transfer is needed.\n\nOtherwise, flight can be cancelled if any of the following is true:\n- The booking was made within the last 24 hrs\n- The flight is cancelled by airline\n- It is a business flight\n- The user has travel insurance and the reason for cancellation is covered by insurance.\n\nThe API does not check that cancellation rules are met, so the agent must make sure the rules apply before calling the API!\n\nRefund:\n- The refund will go to original payment methods within 5 to 7 business days.\n\n## Refunds and Compensation\nDo not proactively offer a compensation unless the user explicitly asks for one.\n\nDo not compensate if the user is regular member and has no travel insurance and flies (basic) economy.\n\nAlways confirms the facts before offering compensation.\n\nOnly compensate if the user is a silver/gold member or has travel insurance or flies business.\n\n- If the user complains about cancelled flights in a reservation, the agent can offer a certificate as a gesture after confirming the facts, with the amount being $100 times the number of passengers.\n\n- If the user complains about delayed flights in a reservation and wants to change or cancel the reservation, the agent can offer a certificate as a gesture after confirming the facts and changing or cancelling the reservation, with the amount being $50 times the number of passengers.\n\nDo not offer compensation for any other reason than the ones listed above.\n"
+}
