@@ -16,7 +16,7 @@ from tau2.data_model.tasks import (
 )
 from tau2.environment.environment import Environment
 from tau2.environment.tool import Tool
-from tau2.environment.toolkit import ToolKitBase, ToolType, is_tool
+from tau2.environment.toolkit import CompositeToolKit, ToolKitBase, ToolType, is_tool
 
 
 @pytest.fixture
@@ -472,3 +472,74 @@ def test_environment_set_state_initialization_actions(
             arguments={"user_id": "user_1", "expected_number": 2},
         )
     )
+
+
+class ToolkitA(ToolKitBase):
+    def __init__(self):
+        super().__init__(db=None)
+        self.state = "a"
+
+    @is_tool(ToolType.READ)
+    def tool_a(self) -> str:
+        """Tool A.
+
+        Returns:
+            The string 'a'.
+        """
+        return self.state
+
+
+class ToolkitB(ToolKitBase):
+    def __init__(self):
+        super().__init__(db=None)
+        self.state = "b"
+
+    @is_tool(ToolType.WRITE)
+    def tool_b(self, value: str) -> str:
+        """Tool B.
+
+        Args:
+            value: The value to set.
+
+        Returns:
+            The new state.
+        """
+        self.state = value
+        return self.state
+
+
+class TestCompositeToolKit:
+    def test_merges_tools_from_multiple_toolkits(self):
+        composite = CompositeToolKit(ToolkitA(), ToolkitB())
+        tool_names = set(composite.get_tools().keys())
+        assert tool_names == {"tool_a", "tool_b"}
+
+    def test_use_tool_delegates_correctly(self):
+        composite = CompositeToolKit(ToolkitA(), ToolkitB())
+        assert composite.use_tool("tool_a") == "a"
+        assert composite.use_tool("tool_b", value="x") == "x"
+
+    def test_has_tool(self):
+        composite = CompositeToolKit(ToolkitA(), ToolkitB())
+        assert composite.has_tool("tool_a")
+        assert composite.has_tool("tool_b")
+        assert not composite.has_tool("tool_c")
+
+    def test_get_db_hash_delegates_to_toolkit_with_db(self):
+        from tau2.domains.airline.data_model import FlightDB
+
+        class ToolkitWithDB(ToolKitBase):
+            def __init__(self):
+                super().__init__(db=FlightDB(flights={}, users={}, reservations={}))
+
+            @is_tool(ToolType.READ)
+            def dummy(self) -> str:
+                """Dummy.
+
+                Returns:
+                    Empty string.
+                """
+                return ""
+
+        composite = CompositeToolKit(ToolkitA(), ToolkitWithDB())
+        assert composite.get_db_hash() is not None

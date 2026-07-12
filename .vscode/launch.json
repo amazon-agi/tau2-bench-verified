@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "GPT5",
+            "name": "Airline GPT4O",
             "type": "debugpy",
             "request": "launch",
             "module": "tau2.cli",
@@ -16,14 +16,16 @@
                 "--agent-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_key\": \"sk-KmLGupoaeLIikaTXzq-WXA\", \"api_version\": \"2024-12-01-preview\"}",
                 "--user-llm", "Azure/gpt-4o",
                 "--user-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_key\": \"sk-KmLGupoaeLIikaTXzq-WXA\", \"api_version\": \"2024-12-01-preview\"}",
-                "--num-trials", "2",
-                "--max-concurrency", "8",
-                "--save-to", "results/airline/gpt-4o_test_wiki_new",
+                "--num-trials", "10",
+                "--max-concurrency", "20",
+                "--save-to", "results/airline/502_gpt-4o_t4_wiki_no_outcome2_knl_tools",
                 // "--num-tasks", "1",
+                // "--task-ids", "2", "6", "8", "13", "16", "18", "24", "25", "26", "30", "32", "37", "45", "48",
                 "--task-split-name", "test"
             ],
             "env": {
-                "KB_DIR": "${workspaceFolder}/../try_wikis/tau_airline/wiki_new"
+                "KB_DIR": "${workspaceFolder}/../try_wikis/tau_airline/wiki_no_outcome2",
+                "KB_MODE": "tools"
             },
         },
         {
@@ -163,6 +165,7 @@
                 "data/simulations/results/airline/",
                 "-o", "data/simulations/results/airline/report.csv",
                 // "--single", "gpt-4o_test_wiki_new.json",
+                // "--tasks", "2", "6", "8", "13", "16", "18", "24", "25", "26", "30", "32", "37", "45", "48"
             ]
         }
     ]

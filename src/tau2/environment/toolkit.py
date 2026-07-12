@@ -212,3 +212,33 @@ class GenericToolKit(ToolKitBase):
         if not all(char in "0123456789+-*/(). " for char in expression):
             raise ValueError("Invalid characters in expression")
         return str(round(float(eval(expression, {"__builtins__": None}, {})), 2))
+
+
+class CompositeToolKit(ToolKitBase):
+    """Merges multiple ToolKitBase instances into a single toolkit interface."""
+
+    def __init__(self, *toolkits: ToolKitBase):
+        super().__init__(db=None)
+        self._toolkits = toolkits
+
+    @property
+    def tools(self) -> Dict[str, Callable]:
+        merged = {}
+        for tk in self._toolkits:
+            merged.update(tk.tools)
+        return merged
+
+    def update_db(self, update_data: Optional[dict[str, Any]] = None):
+        if update_data is None:
+            update_data = {}
+        for tk in self._toolkits:
+            if tk.db is not None:
+                tk.update_db(update_data)
+                return
+        raise ValueError("No database available in any toolkit.")
+
+    def get_db_hash(self) -> str:
+        for tk in self._toolkits:
+            if tk.db is not None:
+                return tk.get_db_hash()
+        raise ValueError("No database available in any toolkit.")

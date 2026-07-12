@@ -1,12 +1,9 @@
 """Toolkit for the airline reservation system."""
 
 from copy import deepcopy
-import os
-from pathlib import Path
 from typing import List, Optional
 
 from loguru import logger
-from tau2.utils.display import ConsoleDisplay
 from tau2.domains.airline.data_model import (
     AirportCode,
     AirportInfo,
@@ -36,55 +33,10 @@ class AirlineTools(ToolKitBase):  # Tools
 
     db: FlightDB
 
-    def __init__(self, db: FlightDB, kb_dir: Optional[Path] = None) -> None:
+    def __init__(self, db: FlightDB) -> None:
         super().__init__(db)
 
-        if not kb_dir and os.getenv("KB_DIR"):
-            kb_dir = Path(os.getenv("KB_DIR"))
-        if kb_dir is not None:
-            from pipeline.runtime.knowledge_tool import KnowledgeTool
-            self._kb = KnowledgeTool(kb_dir) if kb_dir else None
-            ConsoleDisplay.console.print("AirlineTools initialized with knowledge base at:", kb_dir)
 
-    @is_tool(ToolType.READ)
-    def list_articles(self) -> str:
-        """
-        List the knowledge articles available. Returns a markdown table of every
-        article with its title, type, and description. Call this first to discover
-        which articles exist, then fetch the relevant ones with get_article.
-
-        Returns:
-            The contents of the knowledge article index.
-
-        Raises:
-            ValueError: If the knowledge base is not configured or the index is empty.
-        """
-        if self._kb is None:
-            raise ValueError("Knowledge base not configured")
-        ConsoleDisplay.console.print("list_articles()")
-        return self._kb.list_articles()
-
-    @is_tool(ToolType.READ)
-    def get_article(self, article_slug: str) -> str:
-        """
-        Read a single knowledge article by its slug.
-
-        Args:
-            article_slug: The article's slug as shown in the index, e.g.
-                "cancelling-a-flight-reservation". A leading "concepts/" prefix
-                and a trailing ".md" suffix are both accepted and ignored.
-
-        Returns:
-            The text contents of the requested article.
-
-        Raises:
-            ValueError: If the knowledge base is not configured or the article does not exist.
-        """
-        if self._kb is None:
-            raise ValueError("Knowledge base not configured")
-        ConsoleDisplay.console.print(f"get_article({article_slug})")
-        return self._kb.get_article(article_slug)
- 
     def _get_user(self, user_id: str) -> User:
         """Retrieve a user object from the database by user ID."""
         if user_id not in self.db.users:

@@ -5,6 +5,8 @@ from typing import Optional
 
 from tau2.data_model.tasks import Task
 from tau2.domains.airline.data_model import FlightDB
+from tau2.domains.airline.append_wiki import append_wiki_into_policy
+from tau2.domains.airline.inject_wiki_tools import inject_wiki_tools_section
 from tau2.domains.airline.merge_wiki import merge_wiki_into_policy
 from tau2.domains.airline.tools import AirlineTools
 from tau2.domains.airline.utils import (
@@ -25,16 +27,26 @@ def get_environment(
     if db is None:
         db = FlightDB.load(AIRLINE_DB_PATH)
     tools = AirlineTools(db)
+
     with open(AIRLINE_POLICY_PATH, "r") as fp:
         policy = fp.read()
-        
-    wiki_dir = os.environ.get("KB_DIR")
-    wiki_mode = os.environ.get("KB_MODE")
-    if wiki_dir:
-        if wiki_mode == "override":
-            policy = override_policy_with_wiki(wiki_dir)
+
+    kb_dir = os.environ.get("KB_DIR")
+    if kb_dir:
+        wiki_mode = os.environ.get("KB_MODE")
+
+        if wiki_mode == "tools":
+            from tau2.environment.knowledge_toolkit import KnowledgeTools
+            from tau2.environment.toolkit import CompositeToolKit
+            kb_tools = KnowledgeTools(Path(kb_dir))
+            tools = CompositeToolKit(tools, kb_tools)
+            policy = inject_wiki_tools_section(policy)
+        elif wiki_mode == "override":
+            policy = override_policy_with_wiki(kb_dir)
         elif wiki_mode == "merge":
-            policy = merge_wiki_into_policy(policy, wiki_dir)
+            policy = merge_wiki_into_policy(policy, kb_dir)
+        elif wiki_mode == "append":
+            policy = append_wiki_into_policy(policy, kb_dir)
 
     return Environment(
         domain_name="airline",
@@ -72,6 +84,7 @@ def override_policy_with_wiki(kb_dir: str | Path) -> str:
     parts.append("\n\n---\n\n".join(articles))
 
     return "\n".join(parts)
+
 
 
 def get_tasks(task_split_name: Optional[str] = "base") -> list[Task]:
