@@ -5,9 +5,10 @@ from typing import Optional
 
 from tau2.data_model.tasks import Task
 from tau2.domains.airline.data_model import FlightDB
-from tau2.domains.airline.append_wiki import append_wiki_into_policy
-from tau2.domains.airline.inject_wiki_tools import inject_wiki_tools_section
-from tau2.domains.airline.merge_wiki import merge_wiki_into_policy
+from tau2.domains.airline.wiki.append_wiki import append_wiki_into_policy
+from tau2.domains.airline.wiki.inject_wiki_tools import inject_wiki_tools_section
+from tau2.domains.airline.wiki.merge_wiki import merge_wiki_into_policy
+from tau2.domains.airline.wiki.override_wiki import override_policy_with_wiki
 from tau2.domains.airline.tools import AirlineTools
 from tau2.domains.airline.utils import (
     AIRLINE_DB_PATH,
@@ -21,6 +22,7 @@ from tau2.utils import load_file
 def get_environment(
     db: Optional[FlightDB] = None,
     solo_mode: bool = False,
+    task: Optional[Task] = None,
 ) -> Environment:
     if solo_mode:
         raise ValueError("Airline domain does not support solo mode")
@@ -35,6 +37,10 @@ def get_environment(
     if kb_dir:
         wiki_mode = os.environ.get("KB_MODE")
 
+        kb_task = None
+        if os.environ.get("KB_PER_TASK"):
+            kb_task = task
+
         if wiki_mode == "tools":
             from tau2.environment.knowledge_toolkit import KnowledgeTools
             from tau2.environment.toolkit import CompositeToolKit
@@ -42,48 +48,17 @@ def get_environment(
             tools = CompositeToolKit(tools, kb_tools)
             policy = inject_wiki_tools_section(policy)
         elif wiki_mode == "override":
-            policy = override_policy_with_wiki(kb_dir)
+            policy = override_policy_with_wiki(kb_dir, task=kb_task)
         elif wiki_mode == "merge":
-            policy = merge_wiki_into_policy(policy, kb_dir)
+            policy = merge_wiki_into_policy(policy, kb_dir, task=kb_task)
         elif wiki_mode == "append":
-            policy = append_wiki_into_policy(policy, kb_dir)
+            policy = append_wiki_into_policy(policy, kb_dir, task=kb_task)
 
     return Environment(
         domain_name="airline",
         policy=policy,
         tools=tools,
     )
-
-
-def override_policy_with_wiki(kb_dir: str | Path) -> str:
-    """Build a system prompt entirely from wiki articles, keeping only the date/time preamble."""
-    kb_dir = Path(kb_dir)
-    concepts_dir = kb_dir / "concepts"
-
-    with open(AIRLINE_POLICY_PATH, "r") as fp:
-        policy = fp.read()
-
-    # Extract the current date/time line from the original policy
-    date_line = ""
-    for line in policy.splitlines():
-        if "current time is" in line.lower():
-            date_line = line.strip()
-            break
-
-    # Read all wiki articles
-    articles: list[str] = []
-    if concepts_dir.exists():
-        for article_file in sorted(concepts_dir.glob("*.md")):
-            articles.append(article_file.read_text().strip())
-
-    # Compose: date preamble + concatenated wiki articles
-    parts = []
-    if date_line:
-        parts.append(date_line)
-        parts.append("")
-    parts.append("\n\n---\n\n".join(articles))
-
-    return "\n".join(parts)
 
 
 

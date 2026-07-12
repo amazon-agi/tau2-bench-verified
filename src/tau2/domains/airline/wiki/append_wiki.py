@@ -1,27 +1,39 @@
 """Append wiki knowledge as a Quick Reference section at the end of the policy."""
 
 from pathlib import Path
+from typing import Optional
 
-from tau2.domains.airline.merge_wiki import (
+from tau2.data_model.tasks import Task
+from pipeline.wiki_ops import WikiOps
+from tau2.domains.airline.wiki.merge_wiki import (
     RESOURCE_SECTION_MAP,
     _extract_key_points,
     _parse_frontmatter,
     _strip_wiki_metadata,
 )
+from tau2.domains.airline.wiki.select_for_task import select_for_task
 
 
-def append_wiki_into_policy(policy_text: str, wiki_dir: str | Path) -> str:
+def append_wiki_into_policy(
+    policy_text: str, wiki_dir: str | Path, task: Optional[Task] = None, model: str = "claude-sonnet-4-6",
+) -> str:
     """Append wiki knowledge as a Quick Reference section at the end of the policy."""
-    wiki_dir = Path(wiki_dir)
-    concepts_dir = wiki_dir / "concepts"
-    if not concepts_dir.exists():
+    wiki = WikiOps(wiki_dir)
+
+    if task:
+        result = select_for_task(task, wiki, model=model)
+        slugs = result.pages
+    else:
+        slugs = wiki.list_slugs()
+
+    if not slugs:
         return policy_text
 
     all_guardrails: list[str] = []
     section_guidance: dict[str, list[str]] = {}
 
-    for article_file in sorted(concepts_dir.glob("*.md")):
-        article_text = article_file.read_text()
+    for slug in sorted(slugs):
+        article_text = wiki.read_concept_text(slug)
         frontmatter = _parse_frontmatter(article_text)
         resource = frontmatter.get("resource", "")
 
