@@ -17,7 +17,7 @@ def pass_hat_k_task(num_trials: int, num_successes: int, k: int) -> float:
     return comb(num_successes, k) / comb(num_trials, k)
 
 
-def process_file(filepath):
+def process_file(filepath, task_filter=None):
     try:
         with open(filepath) as f:
             data = json.load(f)
@@ -26,6 +26,8 @@ def process_file(filepath):
         return None
 
     simulations = data.get("simulations", [])
+    if task_filter:
+        simulations = [s for s in simulations if str(s.get("task_id")) in task_filter]
     n = len(simulations)
     if n == 0:
         return None
@@ -99,6 +101,7 @@ def main():
     parser.add_argument("folder", help="Folder containing simulation JSON files")
     parser.add_argument("-s", "--single", help="Process only this file within the folder")
     parser.add_argument("-o", "--output", help="Output CSV file (default: stdout)")
+    parser.add_argument("-t", "--tasks", nargs="+", help="Only include these task IDs")
     args = parser.parse_args()
 
     folder = Path(args.folder)
@@ -127,7 +130,7 @@ def main():
 
     rows = []
     for filepath in files:
-        row = process_file(filepath)
+        row = process_file(filepath, task_filter=set(args.tasks) if args.tasks else None)
         if row:
             rows.append(row)
 
