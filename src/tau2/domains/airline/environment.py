@@ -5,10 +5,12 @@ from typing import Optional
 
 from tau2.data_model.tasks import Task
 from tau2.domains.airline.data_model import FlightDB
-from tau2.domains.airline.wiki.append_wiki import append_wiki_into_policy
-from tau2.domains.airline.wiki.inject_wiki_tools import inject_wiki_tools_section
-from tau2.domains.airline.wiki.merge_wiki import merge_wiki_into_policy
-from tau2.domains.airline.wiki.override_wiki import override_policy_with_wiki
+from tau2.wiki import (
+    append_wiki_into_policy,
+    inject_wiki_tools_section,
+    merge_wiki_into_policy,
+    override_policy_with_wiki,
+)
 from tau2.domains.airline.tools import AirlineTools
 from tau2.domains.airline.utils import (
     AIRLINE_DB_PATH,
@@ -46,9 +48,12 @@ def get_environment(
             from tau2.environment.toolkit import CompositeToolKit
             kb_tools = KnowledgeTools(Path(kb_dir))
             tools = CompositeToolKit(tools, kb_tools)
-            policy = inject_wiki_tools_section(policy)
+            policy = inject_wiki_tools_section(
+                policy,
+                preamble_anchor="Before taking any actions that update the booking database",
+            )
         elif wiki_mode == "override":
-            policy = override_policy_with_wiki(kb_dir, task=kb_task)
+            policy = override_policy_with_wiki(policy, kb_dir, task=kb_task)
         elif wiki_mode == "merge":
             policy = merge_wiki_into_policy(policy, kb_dir, task=kb_task)
         elif wiki_mode == "append":

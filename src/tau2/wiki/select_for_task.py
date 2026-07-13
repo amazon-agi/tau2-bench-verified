@@ -1,3 +1,9 @@
+"""Select which wiki pages are relevant to a task.
+
+Domain-agnostic: depends only on ``Task`` and the wiki index. Moved here from
+the airline package so every domain shares one implementation.
+"""
+
 import logging
 
 import litellm
@@ -54,12 +60,11 @@ def _format_task(task: Task) -> str:
 
     return "\n".join(lines)
 
+
 _cache: dict[str, SelectResult] = {}
 
 
-def select_for_task(
-    task: Task, wiki: WikiOps, model: str
-) -> SelectResult:
+def select_for_task(task: Task, wiki: WikiOps, model: str) -> SelectResult:
     """Return wiki concept slugs relevant to the given task.
 
     Uses an LLM to match the task description against the wiki index.

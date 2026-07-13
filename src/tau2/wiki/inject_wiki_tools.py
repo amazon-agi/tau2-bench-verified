@@ -1,6 +1,12 @@
 # Copyright Sierra
-import os
-from pathlib import Path
+"""Inject a knowledge-base tools section into a policy.
+
+Domain-agnostic: the policy anchor used to place the preamble is a parameter.
+When no anchor is given (or it is not found), only the trailing usage section is
+appended.
+"""
+
+from typing import Optional
 
 WIKI_TOOLS_PREAMBLE = 'IMPORTANT: Before taking any action, you must first consult the knowledge base by calling list_articles() and then get_article() for relevant articles (see "Using The knowledge base" section below).'
 
@@ -28,15 +34,20 @@ Execution rules:
 - If the knowledge base does not cover the user's specific request, do NOT infer permission from absence. Verify eligibility with extra caution or ask the user for clarification before proceeding."""
 
 
-def inject_wiki_tools_section(policy: str) -> str:
-    """Inject the knowledge-base preamble and usage section into the policy."""
+def inject_wiki_tools_section(
+    policy: str, preamble_anchor: Optional[str] = None
+) -> str:
+    """Inject the knowledge-base preamble and usage section into the policy.
+
+    If ``preamble_anchor`` is given and found in the policy, the one-line
+    preamble is inserted right after the first line containing it; otherwise the
+    preamble is skipped. The usage section is always appended.
+    """
     lines = policy.split("\n")
-    insert_idx = None
-    for i, line in enumerate(lines):
-        if "Before taking any actions that update the booking database" in line:
-            insert_idx = i + 1
-            break
-    if insert_idx is not None:
-        lines.insert(insert_idx, "")
-        lines.insert(insert_idx + 1, WIKI_TOOLS_PREAMBLE)
+    if preamble_anchor is not None:
+        for i, line in enumerate(lines):
+            if preamble_anchor in line:
+                lines.insert(i + 1, "")
+                lines.insert(i + 2, WIKI_TOOLS_PREAMBLE)
+                break
     return "\n".join(lines) + WIKI_TOOLS_SECTION

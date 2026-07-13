@@ -1,26 +1,30 @@
-"""Build a system prompt entirely from wiki articles, replacing the policy."""
+"""Build a system prompt entirely from wiki articles, replacing the policy.
+
+Domain-agnostic: the caller passes the original policy text (used only to carry
+over a date/time preamble line); no domain constant is imported here.
+"""
 
 from pathlib import Path
 from typing import Optional
 
 from tau2.data_model.tasks import Task
-from tau2.domains.airline.utils import AIRLINE_POLICY_PATH
+from tau2.wiki.select_for_task import select_for_task
 from pipeline.wiki_ops import WikiOps
-from tau2.domains.airline.wiki.select_for_task import select_for_task
 
 
 def override_policy_with_wiki(
-    kb_dir: str | Path, task: Optional[Task] = None, model: str = "claude-sonnet-4-6",
+    policy_text: str,
+    kb_dir: str | Path,
+    task: Optional[Task] = None,
+    model: str = "claude-sonnet-4-6",
 ) -> str:
-    """Build a system prompt entirely from wiki articles, keeping only the date/time preamble."""
+    """Build a system prompt entirely from wiki articles, keeping only the
+    date/time preamble line found in ``policy_text``."""
     wiki = WikiOps(kb_dir)
 
-    with open(AIRLINE_POLICY_PATH, "r") as fp:
-        policy = fp.read()
-
-    # Extract the current date/time line from the original policy
+    # Carry over the current date/time line from the original policy, if any.
     date_line = ""
-    for line in policy.splitlines():
+    for line in policy_text.splitlines():
         if "current time is" in line.lower():
             date_line = line.strip()
             break
