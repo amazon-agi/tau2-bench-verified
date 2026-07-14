@@ -2,6 +2,7 @@ import json
 import multiprocessing
 import random
 from concurrent.futures import ThreadPoolExecutor
+from copy import deepcopy
 from pathlib import Path
 from typing import Optional
 
@@ -16,6 +17,7 @@ from tau2.data_model.simulation import (
     SimulationRun,
     UserInfo,
 )
+from tau2.data_model.message import SystemMessage
 from tau2.data_model.tasks import Task
 from tau2.environment.environment import Environment, EnvironmentInfo
 from tau2.evaluator.evaluator import EvaluationType, evaluate_simulation
@@ -528,10 +530,31 @@ def run_task(
 
     simulation.reward_info = reward_info
 
+    # Save the agent's system prompt as the first message (role=system) in the
+    # saved trajectory. Done after evaluation so evaluators (which expect only
+    # user/assistant/tool messages) are not affected.
+    system_prompt = getattr(agent, "system_prompt", None)
+    if system_prompt is not None and not (
+        simulation.messages and isinstance(simulation.messages[0], SystemMessage)
+    ):
+        simulation.messages.insert(
+            0, SystemMessage(role="system", content=system_prompt)
+        )
+
     logger.info(
         f"FINISHED SIMULATION: Domain: {domain}, Task: {task.id}, Agent: {agent.__class__.__name__}, User: {user.__class__.__name__}. Reward: {reward_info.reward}"
     )
     return simulation
+
+
+def mask_api_key(llm_args: Optional[dict]) -> Optional[dict]:
+    """Return a copy of ``llm_args`` with ``api_key`` masked, leaving the
+    original dict (used for runtime LLM calls) untouched."""
+    if not llm_args or "api_key" not in llm_args:
+        return llm_args
+    masked = deepcopy(llm_args)
+    masked["api_key"] = "***MASKED***"
+    return masked
 
 
 def get_info(
@@ -550,13 +573,13 @@ def get_info(
     user_info = UserInfo(
         implementation=user,
         llm=llm_user,
-        llm_args=llm_args_user,
+        llm_args=mask_api_key(llm_args_user),
         global_simulation_guidelines=get_global_user_sim_guidelines(),
     )
     agent_info = AgentInfo(
         implementation=agent,
         llm=llm_agent,
-        llm_args=llm_args_agent,
+        llm_args=mask_api_key(llm_args_agent),
     )
     environment_info = get_environment_info(
         domain, include_tool_info=False

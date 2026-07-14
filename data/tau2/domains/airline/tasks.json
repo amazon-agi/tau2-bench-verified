@@ -135,7 +135,7 @@
         "user_scenario": {
             "persona": null,
             "instructions": {
-                "task_instructions": "If this is not already the case, insist on getting the total number in numeric form, as you can see numbers better than words. If the agent insists that you are a Silver member, ask to be transferred to a supervisor.",
+                "task_instructions": "You want the total number of suitcases allowed for the entire reservation (all passengers combined), not the per-passenger allowance. If the agent gives you a per-passenger number, ask for the total across all passengers on the reservation. If this is not already the case, insist on getting the total number in numeric form, as you can see numbers better than words. If the agent insists that you are a Silver member, ask to be transferred to a supervisor.",
                 "domain": "airline",
                 "reason_for_call": "You want to figure out the total number of suitcases the reservation allows you to take on your upcoming flight.\n\nYou have a lot of things you need to bring with you on this trip. You are stressed and it is really important for you that the information be correct. \n\nYou're pretty sure that you're a Gold member.",
                 "known_info": "You are Anya Garcia.\n\nYour user id is: anya_garcia_5901.\n\nYour confirmation number is JMO1MG.",
