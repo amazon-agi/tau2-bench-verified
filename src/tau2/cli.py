@@ -1,8 +1,21 @@
 import argparse
 import json
+import os
 
 from dotenv import load_dotenv
 load_dotenv()
+
+
+def _parse_llm_args(value: str) -> dict:
+    """Parse a JSON llm-args string, filling ``api_key`` from the ``LLM_API_KEY``
+    environment variable when it is absent (or left empty). This keeps secrets
+    out of launch configs and shell history."""
+    args = json.loads(value)
+    if not args.get("api_key"):
+        env_key = os.getenv("LLM_API_KEY")
+        if env_key:
+            args["api_key"] = env_key
+    return args
 
 from tau2.config import (
     DEFAULT_AGENT_IMPLEMENTATION,
@@ -54,7 +67,7 @@ def add_run_args(parser):
     )
     parser.add_argument(
         "--agent-llm-args",
-        type=json.loads,
+        type=_parse_llm_args,
         default={"temperature": DEFAULT_LLM_TEMPERATURE_AGENT},
         help=f"The arguments to pass to the LLM for the agent. Default is '{{\"temperature\": {DEFAULT_LLM_TEMPERATURE_AGENT}}}'.",
     )
@@ -73,7 +86,7 @@ def add_run_args(parser):
     )
     parser.add_argument(
         "--user-llm-args",
-        type=json.loads,
+        type=_parse_llm_args,
         default={"temperature": DEFAULT_LLM_TEMPERATURE_USER},
         help=f"The arguments to pass to the LLM for the user. Default is '{{\"temperature\": {DEFAULT_LLM_TEMPERATURE_USER}}}'.",
     )

@@ -1,9 +1,0 @@
-file,n,passed,pass^1,pass^2,pass^3,avg_duration,avg_cost,avg_prompt_tokens,avg_completion_tokens,avg_total_tokens,avg_turns,avg_knl_toolcalls,avg_otoolcalls
-00_gpt-4o_baseline.json,200,100,0.5,0.4156,0.3712,46.02,0.082528,52613.2,1245.4,53858.6,6.2,0.0,6.71
-01_gpt-4o_test_nopolicy.json,40,5,0.125,0.1,0.0,72.04,0.062922,37779.9,1127.3,38907.3,5.92,0.0,7.45
-02_sonnet46_baseline.json,80,60,0.75,0.6667,0.625,71.99,0.0,80448.2,1973.2,82421.5,6.72,0.0,8.04
-340_gpt-4o_t4_outcome_oracle_trimmed_append_sys_prompt.json,200,104,0.52,0.4278,0.3829,37.12,0.088309,56074.5,1328.2,57402.7,6.42,0.0,6.83
-45_sonnet46_t4_outcome_oracle_no_policy_knl_tools.json,80,58,0.725,0.6333,0.575,72.82,0.0,96773.9,2235.9,99009.8,5.59,3.09,8.12
-501_gpt-4o_t4_wiki_no_outcome2_merged_sys_prompt.json,200,110,0.55,0.4456,0.3854,55.2,0.105149,73108.5,1353.5,74461.9,6.33,0.0,6.31
-502_gpt-4o_t4_wiki_no_outcome2_append_sys_prompt.json,200,108,0.54,0.4433,0.4033,62.95,0.103458,68109.1,1321.8,69430.9,6.26,0.0,6.45
-503_gpt-4o_t4_wiki_no_outcome2_knl_tools.json,200,103,0.515,0.3811,0.3117,46.47,0.131661,85714.8,1288.5,87003.3,6.1,2.56,6.54

@@ -296,7 +296,7 @@
         "user_scenario": {
             "persona": null,
             "instructions": {
-                "task_instructions": "Under no circumstances do you want to be transferred to another agent.",
+                "task_instructions": "Under no circumstances do you want to be transferred to another agent. Refuse any new booking.",
                 "domain": "airline",
                 "reason_for_call": "You think that you've added insurance to your upcoming flight but it's not showing up online.\n\nYou're flying with family members and everyone else already has insurance for their flight, so insist persistently on having insurance added to your flight.",
                 "known_info": "Your user id is sophia_taylor_9065.\n\nThe reservation number is PEP4E0",
@@ -2465,7 +2465,7 @@
         "user_scenario": {
             "persona": null,
             "instructions": {
-                "task_instructions": "Even if the agent says you will not receive a refund for some of them, you want to proceed anyway so that you can give up your seat for someone else who needs it.",
+                "task_instructions": "Even if the agent says you will not receive a refund for some of them, you want to proceed anyway so that you can give up your seat for someone else who needs it. Refuse any new booking.",
                 "domain": "airline",
                 "reason_for_call": "You want to cancel all of your upcoming flights.",
                 "known_info": "You are Amelia Davis.\n\nYour user id is amelia_davis_8890.\n\n\nYou are French by birth and your English is not perfect.  \nYou occasionally insert French words when you communicate.",
@@ -3155,7 +3155,7 @@
         "user_scenario": {
             "persona": null,
             "instructions": {
-                "task_instructions": "Be insistent that you want full refund given that it was a family emergency, sound upset and and under no circumstances you want to get transferred to another agent. \n\nIf you can't get a refund, try to change the flight to May 22nd. \n\nIf that doesn't work, try to add insurance to the flight, be insistent.\n\nBy NO MEANS you will upgrade your cabin.",
+                "task_instructions": "Be insistent that you want full refund given that it was a family emergency, sound upset and and under no circumstances you want to get transferred to another agent. \n\nIf you can't get a refund, try to change the flight to May 22nd. \n\nIf that doesn't work, try to add insurance to the flight, be insistent.\n\nBy NO MEANS you will upgrade your cabin.\n\nRefuse any new booking.",
                 "domain": "airline",
                 "reason_for_call": "You need to cancel your flight as soon as possible because of a family emergency.",
                 "known_info": "You are Sophia Taylor.\n\nYour user id is sophia_taylor_9065. \n\nYou reservation number is PEP4E0.",

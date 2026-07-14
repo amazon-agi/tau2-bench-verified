@@ -5,157 +5,31 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Wiki Airline",
+            "name": "Run Airline",
             "type": "debugpy",
             "request": "launch",
             "module": "tau2.cli",
             "args": [
                 "run",
                 "--domain", "airline",
-                "--agent-llm", "Azure/gpt-4o",
-                "--agent-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_key\": \"sk-KmLGupoaeLIikaTXzq-WXA\", \"api_version\": \"2024-12-01-preview\"}",
-                "--user-llm", "Azure/gpt-4o",
-                "--user-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_key\": \"sk-KmLGupoaeLIikaTXzq-WXA\", \"api_version\": \"2024-12-01-preview\"}",
+                "--agent-llm", "Azure/gpt-5-2025-08-07",
+                "--agent-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_version\": \"2024-12-01-preview\"}",
+                "--user-llm", "Azure/gpt-5-2025-08-07",
+                "--user-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_version\": \"2024-12-01-preview\"}",
                 "--num-trials", "10",
-                "--max-concurrency", "20",
-                "--save-to", "results/airline/5021_gpt-4o_t4_wiki_no_outcome2_append_oracle",
+                "--max-concurrency", "100",
+                "--save-to", "results/airline/12_gpt-5_test_wiki_knl_tools",
                 // "--num-tasks", "1",
                 // "--task-ids", "2", "6", "8", "13", "16", "18", "24", "25", "26", "30", "32", "37", "45", "48",
+                // "--task-ids", "6", "45",
                 "--task-split-name", "test"
             ],
             "env": {
-                "KB_DIR": "${workspaceFolder}/../try_wikis/tau_airline/wiki_no_outcome2",
-                "KB_MODE": "merge",
-                "KB_PER_TASK": "1"
+                "KB_DIR": "/Users/davidboaz/Documents/GitHub/tau2-bench-verified/wikis/wiki_gpt_5",
+                // "KB_MODE": "append",
+                "KB_MODE": "tools",
+                // "KB_PER_TASK": "1"
             },
-        },
-        {
-            "name": "Claude4",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "tau2.cli",
-            "args": [
-                "run",
-                "--domain", "airline",
-                "--agent-llm", "GCP/claude-4-sonnet",
-                "--agent-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_key\": \"sk-qHP8hbL3qxZAiQSTLOItKg\", \"api_version\": \"2024-12-01-preview\"}",
-                "--user-llm", "Azure/gpt-4.1",
-                "--user-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_key\": \"sk-qHP8hbL3qxZAiQSTLOItKg\", \"api_version\": \"2024-12-01-preview\"}",
-                "--num-trials", "1",
-                "--max-concurrency", "8",
-                "--save-to", "results/airline/claude-4-sonnet",
-                // "--num-tasks", "1",
-            ]
-        },
-        {
-            "name": "GPT_OSS_120B",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "tau2.cli",
-            "args": [
-                "run",
-                "--domain", "airline",
-                "--agent-llm", "openai/openai/gpt-oss-120b",
-                "--agent-llm-args", "{\"extra_headers\": {\"RITS_API_KEY\": \"38662a25ac5814b54fd99bb6e7f75636\"}, \"custom_llm_provider\":\"openai\", \"api_base\": \"https://inference-3scale-apicast-production.apps.rits.fmaas.res.ibm.com/gpt-oss-120b/v1\"}",
-                "--user-llm", "Azure/gpt-4.1",
-                "--user-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_key\": \"sk-qHP8hbL3qxZAiQSTLOItKg\", \"api_version\": \"2024-12-01-preview\"}",
-                "--num-trials", "4",
-                "--max-concurrency", "8",
-                // "--num-tasks", "5",
-                "--save-to", "results/airline/gpt-oss-120b",
-                // "--task-ids",  "27", "37", "42", "46", "47", "48", "49"
-            ]
-        },
-        {
-            "name": "Llama_maverick",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "tau2.cli",
-            "args": [
-                "run",
-                "--domain", "airline",
-                "--agent-llm", "meta-llama/llama-4-maverick-17b-128e-instruct-fp8",
-                "--agent-llm-args", "{\"extra_headers\": {\"RITS_API_KEY\": \"38662a25ac5814b54fd99bb6e7f75636\"}, \"custom_llm_provider\":\"openai\", \"api_base\": \"https://inference-3scale-apicast-production.apps.rits.fmaas.res.ibm.com/llama-4-mvk-17b-128e-fp8/v1\"}",
-                "--user-llm", "Azure/gpt-4.1",
-                "--user-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_key\": \"sk-qHP8hbL3qxZAiQSTLOItKg\", \"api_version\": \"2024-12-01-preview\"}",
-                "--num-trials", "4",
-                "--max-concurrency", "4",
-                // "--num-tasks", "5",
-                "--save-to", "results/airline/llama-4-maverick-17b-128e-instruct-fp8",
-            ]
-        },
-        {
-            "name": "Qwen 2-5-72B",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "tau2.cli",
-            "args": [
-                "run",
-                "--domain", "airline",
-                "--agent-llm", "Qwen/Qwen2.5-72B-Instruct",
-                "--agent-llm-args", "{\"extra_headers\": {\"RITS_API_KEY\": \"38662a25ac5814b54fd99bb6e7f75636\"}, \"custom_llm_provider\":\"openai\", \"api_base\": \"https://inference-3scale-apicast-production.apps.rits.fmaas.res.ibm.com/qwen2-5-72b-instruct/v1\"}",
-                "--user-llm", "Azure/gpt-4.1",
-                "--user-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_key\": \"sk-qHP8hbL3qxZAiQSTLOItKg\", \"api_version\": \"2024-12-01-preview\"}",
-                "--num-trials", "4",
-                "--max-concurrency", "8",
-                // "--num-tasks", "5",
-                "--save-to", "results/airline/qwen2-5-72b-instruct",
-            ]
-        },
-        {
-            "name": "Kimi-K2.5",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "tau2.cli",
-            "args": [
-                "run",
-                "--domain", "airline",
-                "--agent-llm", "moonshotai/Kimi-K2.5",
-                "--agent-llm-args", "{\"extra_headers\": {\"RITS_API_KEY\": \"38662a25ac5814b54fd99bb6e7f75636\"}, \"custom_llm_provider\":\"openai\", \"api_base\": \"https://inference-3scale-apicast-production.apps.rits.fmaas.res.ibm.com/moonshotai-kimi-k2-5/v1\"}",
-                "--user-llm", "Azure/gpt-4.1",
-                "--user-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.ai-models.vpc-int.res.ibm.com\", \"api_key\": \"sk-qHP8hbL3qxZAiQSTLOItKg\", \"api_version\": \"2024-12-01-preview\"}",
-                "--num-trials", "4",
-                "--max-concurrency", "8",
-                // "--num-tasks", "5",
-                "--save-to", "results/airline/Kimi-K2.5",
-            ]
-        },
-        {
-            "name": "gemini3Pro",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "tau2.cli",
-            "args": [
-                "run",
-                "--domain", "airline",
-                "--agent-llm", "gcp/gemini-3-pro-preview",
-                "--agent-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.bx.cloud9.ibm.com\", \"api_key\": \"sk-qHP8hbL3qxZAiQSTLOItKg\"}",
-                "--user-llm", "Azure/gpt-4o",
-                "--user-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.bx.cloud9.ibm.com\", \"api_key\": \"sk-qHP8hbL3qxZAiQSTLOItKg\"}",
-                "--num-trials", "4",
-                "--max-concurrency", "8",
-                // "--num-tasks", "5",
-                "--save-to", "results/airline/gemini-3-pro-preview",
-            ]
-        },
-        {
-            "name": "deepseek-v3.2",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "tau2.cli",
-            "args": [
-                "run",
-                "--domain", "airline",
-                "--agent-llm", "deepseek-ai/DeepSeek-V3.2",
-                "--agent-llm-args", "{\"extra_headers\": {\"RITS_API_KEY\": \"38662a25ac5814b54fd99bb6e7f75636\"}, \"custom_llm_provider\":\"openai\", \"api_base\": \"https://inference-3scale-apicast-production.apps.rits.fmaas.res.ibm.com/deepseek-v3-2/v1\"}",
-                "--user-llm", "Azure/gpt-4o",
-                "--user-llm-args", "{\"custom_llm_provider\":\"openai\", \"api_base\": \"https://ete-litellm.bx.cloud9.ibm.com\", \"api_key\": \"sk-qHP8hbL3qxZAiQSTLOItKg\"}",
-                "--num-trials", "4",
-                "--max-concurrency", "8",
-                // "--num-tasks", "5",
-                "--save-to", "results/airline/deepseek-v3.2",
-                // "--task-ids",  "27", "37", "42", "46", "47", "48", "49"
-            ]
         },
         {
             "name": "Report",
@@ -167,6 +41,16 @@
                 "-o", "data/simulations/results/airline/report.csv",
                 // "--single", "gpt-4o_test_wiki_new.json",
                 // "--tasks", "2", "6", "8", "13", "16", "18", "24", "25", "26", "30", "32", "37", "45", "48"
+            ]
+        },
+        {
+            "name": "Split Trajectories",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/split_trajectories.py",
+            "args": [
+                "data/simulations/results/airline/01_gpt-5_train_baseline.json",
+                "data/simulations/results/airline/01_gpt-5_train_baseline_split"
             ]
         }
     ]

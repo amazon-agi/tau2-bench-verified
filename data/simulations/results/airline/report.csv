@@ -1,0 +1,5 @@
+file,n,passed,pass^1,pass^2,pass^3,avg_duration,avg_cost,avg_prompt_tokens,avg_completion_tokens,avg_total_tokens,avg_turns,avg_knl_toolcalls,avg_otoolcalls
+01_gpt-5_train_baseline.json,300,241,0.8033,0.7607,0.7303,238.13,0.160367,51673.5,17199.9,68873.3,4.42,0.0,9.23
+02_gpt-5_test_baseline.json,200,150,0.75,0.6756,0.6283,250.86,0.170826,56941.3,18738.7,75680.0,4.55,0.0,14.09
+12_gpt-5_test_wiki_append.json,200,158,0.79,0.7456,0.7121,344.28,0.183441,96490.1,19851.5,116341.5,4.71,0.0,15.35
+12_gpt-5_test_wiki_knl_tools.json,200,153,0.765,0.7122,0.6813,376.05,0.270893,117734.0,25543.5,143277.5,4.88,4.18,17.14
