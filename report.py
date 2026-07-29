@@ -52,6 +52,7 @@ def process_file(filepath, task_filter=None):
     total_prompt_tokens = 0
     total_completion_tokens = 0
     total_user_turns = 0
+    total_agent_llm_calls = 0
     total_knl_toolcalls = 0
     total_other_toolcalls = 0
 
@@ -69,6 +70,8 @@ def process_file(filepath, task_filter=None):
             if usage:
                 total_prompt_tokens += usage.get("prompt_tokens", 0)
                 total_completion_tokens += usage.get("completion_tokens", 0)
+            if msg.get("role") == "assistant" and usage:
+                total_agent_llm_calls += 1
 
             tool_calls = msg.get("tool_calls") or []
             for tc in tool_calls:
@@ -91,8 +94,9 @@ def process_file(filepath, task_filter=None):
         "avg_completion_tokens": round(total_completion_tokens / n, 1),
         "avg_total_tokens": round((total_prompt_tokens + total_completion_tokens) / n, 1),
         "avg_turns": round(total_user_turns / n, 2),
+        "avg_agent_llm_calls": round(total_agent_llm_calls / n, 2),
         "avg_knl_toolcalls": round(total_knl_toolcalls / n, 2),
-        "avg_otoolcalls": round(total_other_toolcalls / n, 2),
+        "avg_other_toolcalls": round(total_other_toolcalls / n, 2),
     }
 
 
@@ -125,7 +129,7 @@ def main():
         "file", "n", "passed", "pass^1", "pass^2", "pass^3",
         "avg_duration", "avg_cost",
         "avg_prompt_tokens", "avg_completion_tokens", "avg_total_tokens",
-        "avg_turns", "avg_knl_toolcalls", "avg_otoolcalls",
+        "avg_turns", "avg_agent_llm_calls", "avg_knl_toolcalls", "avg_other_toolcalls",
     ]
 
     rows = []

@@ -18,7 +18,6 @@ from pathlib import Path
 from typing import Optional
 
 from tau2.data_model.tasks import Task
-from tau2.wiki.parse import extract_key_points, parse_frontmatter, strip_wiki_metadata
 from tau2.wiki.select_for_task import select_for_task
 from pipeline.wiki_ops import WikiOps
 
@@ -50,37 +49,52 @@ def collect(
     """Read every slug and split its Key Points into guardrails + guidance.
 
     Unlike the old per-domain logic, there is **no ``resource`` gate**: every
-    article is processed. When ``guardrail_reframing`` is True (the historical
-    behavior), bullets beginning with ``NEVER`` are hoisted into a shared
-    guardrails list; otherwise they stay inline in their article's guidance.
+    article is processed. Key points are read through the structured
+    :class:`~pipeline.models.KeyPoint` model, and only ``observed`` points are
+    rendered — ``inferred`` and untagged key points are dropped, so unadmitted
+    (non-grounded) claims never ship into the policy. The model also yields the
+    key-point text with its ``%%ec:...%%`` sentinel and ``[N]`` citations
+    already stripped (the SCOPE qualifier is preserved).
+
+    When ``guardrail_reframing`` is True (the historical behavior), bullets
+    beginning with ``NEVER`` are hoisted into a shared guardrails list;
+    otherwise they stay inline in their article's guidance.
     """
     guardrails: list[str] = []
     articles: list[ArticleGuidance] = []
 
     for slug in sorted(slugs):
-        article_text = wiki.read_concept_text(slug)
-        frontmatter = parse_frontmatter(article_text)
+        concept = wiki.read_concept(slug)
+        frontmatter = concept.frontmatter
         article = ArticleGuidance(
             slug=slug,
-            title=frontmatter.get("title") or slug,
-            description=frontmatter.get("description", ""),
+            title=frontmatter.title or slug,
+            description=frontmatter.description or "",
         )
 
-        for bullet in extract_key_points(article_text):
-            # Keep the SCOPE qualifier: it bounds a prohibition, and dropping it
-            # lets a narrowly-scoped NEVER rule read as an unconditional absolute.
-            cleaned = strip_wiki_metadata(bullet, strip_scope=False)
-            if not cleaned:
+        for kp in concept.key_points:
+            # Serve only grounded claims. `observed` means a tool call/result in
+            # some trajectory demonstrated it; `inferred` and untagged are benched.
+            if kp.tag != "observed":
                 continue
-            if guardrail_reframing and cleaned.lstrip("- ").startswith("NEVER"):
-                guardrails.append(cleaned)
+            # KeyPoint.text already has citations and the sentinel stripped; the
+            # SCOPE qualifier survives, since dropping it lets a narrowly-scoped
+            # NEVER rule read as an unconditional absolute.
+            text = kp.text.strip()
+            if not text:
+                continue
+            bullet = f"- {text}"
+            if guardrail_reframing and text.startswith("NEVER"):
+                guardrails.append(bullet)
             else:
-                article.bullets.append(cleaned)
+                article.bullets.append(bullet)
 
         if article.bullets:
             articles.append(article)
-        elif not guardrails and not article.bullets:
-            logger.debug("Wiki article %r has no Key Points; skipping", slug)
+        else:
+            logger.debug(
+                "Wiki article %r contributes no observed key points; skipping", slug
+            )
 
     return guardrails, articles
 
